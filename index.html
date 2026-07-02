@@ -28,5 +28,125 @@ El agente aprende haciendo. No se le dice exactamente qué decisión tomar, sino
 <div><h3>Dentro del Machine Learning existen distintos enfoques según el tipo de problema que se desea resolver. El aprendizaje supervisado suele utilizarse cuando existen datos etiquetados y se busca predecir una categoría o valor. El aprendizaje no supervisado se utiliza cuando se desea encontrar patrones ocultos en datos sin etiquetas. La detección de anomalías busca identificar comportamientos extraños o poco frecuentes.
 
 El Aprendizaje por Refuerzo se diferencia porque no se centra únicamente en clasificar o predecir, sino en decidir qué acción realizar en una situación determinada. Por eso, en el contexto de esta tarea, la detección de anomalías responde a la pregunta “¿esto es extraño?”, mientras que el Aprendizaje por Refuerzo responde a la pregunta “¿qué debería hacer ahora?”. Esta distinción aparece en el material del curso, donde se separan las preguntas de ciencia de datos asociadas a clasificación, anomalías, regresión, clustering y Aprendizaje por Refuerzo.</h3></div>
+
+<div>
+  <table>
+    <tbody>
+      <tr>
+        <td>Tipo de aprendizaje</td>
+        <td>Pregunta principal</td>
+        <td>Ejemplo</td>
+      </tr>
+      <tr>
+        <td>Supervisado</td>
+        <td>¿A qué clase pertenece?</td>
+        <td>Clasificar correos como spam o no spam</td>
+      </tr>
+      <tr>
+        <td>No supervisado</td>
+        <td>¿Cómo se agrupan los datos?</td>
+        <td>datos?
+Agrupar clientes por comportamiento</td>
+      </tr>
+      <tr>
+        <td>Detección de anomalías</td>
+        <td>¿Esto es extraño?</td>
+        <td>Detectar tráfico inusual en una red</td>
+      </tr>
+      <tr>
+        <td>Aprendizaje por Refuerzo</td>
+        <td>¿Que accion debo tomar?</td>
+        <td>Bloquear, permitir o alertar ante un evento</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<div>
+<div><h2>Conceptos fundamentales de RL</h2></div>
+<div><h4>Para comprender el Aprendizaje por Refuerzo es necesario identificar los elementos que forman parte del proceso de decisión. En esta aplicación se utilizan seis conceptos principales: agente, entorno, estado, acción, recompensa y política.</h4></div>
+
+<div><h3>Agente</h3></div>
+<div><h4>El agente es el componente que toma decisiones. En esta aplicación, el agente representa un sistema de detección de intrusiones que observa eventos de red y decide qué acción tomar frente a ellos.</h4></div>
+
+
+
+
+<div><h3>Entorno</h3></div>
+<div><h4>El entorno es el espacio donde actúa el agente. Responde a las acciones tomadas y entrega un nuevo estado junto con una recompensa.</h4></div>
+
+
+
+
+<div><h3>Estado</h3></div>
+<div><h4>El estado describe la situación actual que observa el agente. Puede estar formado por variables o características relevantes del entorno.</h4></div>
+
+
+
+
+<div><h3>Acción</h3></div>
+<div><h4>La acción es la decisión que toma el agente frente a un estado.</h4></div>
+
+
+<div><h3>Recompensa</h3></div>
+<div><h4>La recompensa es la retroalimentación que recibe el agente después de actuar. Puede ser positiva si la decisión fue correcta o negativa si produjo un error.</h4></div>
+
+
+<div><h3>Política</h3></div>
+<div><h4>La política es la estrategia que utiliza el agente para seleccionar acciones. Representa la forma en que el agente decide qué hacer según el estado observado.</h4></div>
+</div>
+
+
+<div>
+
+<div><h2>Ciclo de aprendizaje por recompensas</h2></div>
+<div><h3>El ciclo del Aprendizaje por Refuerzo comienza cuando el agente observa el estado actual del entorno. Luego selecciona una acción de acuerdo con su política. El entorno recibe esa acción, cambia su estado y entrega una recompensa. Finalmente, el agente utiliza esa recompensa para ajustar su comportamiento futuro.
+Este proceso se repite muchas veces. A medida que el agente acumula experiencia, aprende qué acciones son más convenientes en cada tipo de situación. Si una acción produce buenos resultados, aumenta la probabilidad de repetirla. Si una acción produce penalizaciones, el agente debería evitarla en situaciones similares.</h3></div>
+
+</div>
+
+<div>
+
+<div><h2>Algoritmo o enfoque de RL</h2></div>
+<div><h3>Para esta aplicación se utiliza una versión simplificada del enfoque Q-learning. Este algoritmo permite que un agente aprenda el valor de realizar una acción en un estado determinado. Dicho valor se almacena en una tabla llamada tabla Q.
+
+La tabla Q contiene combinaciones de estados y acciones. Cada celda representa qué tan conveniente es ejecutar una acción específica en un estado determinado. Al inicio, el agente no sabe qué acciones son mejores, por lo que puede tomar decisiones exploratorias. Después de varios episodios, la tabla se actualiza según las recompensas obtenidas.
+
+En esta aplicación no se implementa un modelo avanzado de producción, sino una simulación educativa que muestra la lógica general del aprendizaje: el agente observa eventos, toma decisiones, recibe recompensas y modifica su comportamiento.</h3></div>
+
+<h3>Q(estado, acción) ← Q(estado, acción) + α [ recompensa + γ max Q(nuevo_estado, acción) - Q(estado, acción) ]</h3>
+
+<h2>Explicación simple</h2>
+<h3>La fórmula actualiza el valor de una acción considerando tres elementos: la recompensa obtenida, el mejor valor esperado en el siguiente estado y el valor anterior que tenía esa acción. De esta manera, el agente aprende progresivamente qué decisiones son más convenientes.</h3>
+</div>
+
+
+
+
+<div>
+
+<div><h2>Caso práctico de detección de anomalías</h2></div>
+<div><h3>Caso práctico: detección de intrusiones en una red computacional</h3></div>
+<div><h3>El caso práctico seleccionado corresponde a la detección de anomalías en una red computacional. En este escenario, una organización recibe constantemente tráfico de red. La mayoría de los eventos son normales, pero algunos pueden representar comportamientos sospechosos o ataques, como intentos fallidos repetidos, escaneo de puertos, conexiones inusuales o transferencia anormal de datos.
+
+El problema consiste en que no basta con identificar que un evento es extraño. También es necesario decidir qué acción tomar frente a ese evento. Una decisión incorrecta puede generar consecuencias negativas: bloquear tráfico legítimo afecta la disponibilidad del servicio, mientras que permitir una anomalía puede comprometer la seguridad del sistema.
+
+Por esta razón, el Aprendizaje por Refuerzo resulta adecuado para representar el problema como una secuencia de decisiones. El agente observa el estado del tráfico, elige una acción y recibe una recompensa según si la decisión fue correcta o incorrecta.</h3></div>
+
+</div>
+
+
+
+
+<div>
+
+<div><h2>Modelado del caso en términos de RL</h2></div>
+<div><h3></h3></div>
+
+</div>
+
+
+
 </body>
 </html>

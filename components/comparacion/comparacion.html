@@ -1,0 +1,48 @@
+<article class="content-section slide-comparacion">
+  <h2>Diferencia con otros tipos de Machine Learning</h2>
+  <section class="learning-intro" aria-labelledby="comparacion-meta">
+    <h3 id="comparacion-meta">Punto de partida</h3>
+    <dl>
+      <div><dt>Objetivo de aprendizaje</dt><dd>Reconocer cuándo el problema es predicción y cuándo es decisión secuencial.</dd></div>
+      <div><dt>Conocimiento previo</dt><dd>Distinguir agente, entorno y política.</dd></div>
+    </dl>
+  </section>
+  <p>
+    Un modelo predictivo puede estimar el riesgo de un evento. RL recibe esa estimación como parte del estado
+    y decide qué hacer considerando consecuencias futuras. Si cada decisión fuera independiente, una regla,
+    un clasificador o un bandit contextual podrían ser alternativas más simples.
+  </p>
+  <p class="table-instruction" id="comparison-table-instruction">
+    Desplázate horizontalmente dentro de la tabla si tu pantalla no muestra todas las columnas.
+  </p>
+  <div
+    class="table-wrap"
+    role="region"
+    aria-label="Comparación desplazable entre enfoques de predicción y decisión"
+    tabindex="0"
+  >
+    <table aria-describedby="comparison-table-instruction">
+      <caption>Comparación entre enfoques de predicción y decisión</caption>
+      <thead>
+        <tr><th scope="col">Enfoque</th><th scope="col">Cuándo resulta útil</th><th scope="col">Ejemplo</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Reglas</td><td>La respuesta correcta es conocida y estable.</td><td>Bloquear una dirección incluida en una lista.</td></tr>
+        <tr><td>Supervisado o anomalías</td><td>Se necesita predecir o puntuar una observación.</td><td>Producir un riesgo estimado.</td></tr>
+        <tr><td>Bandit contextual</td><td>La acción tiene una consecuencia inmediata, sin cambiar el futuro.</td><td>Elegir una revisión para un evento aislado.</td></tr>
+        <tr><td>Planificación o control</td><td>La dinámica es conocida y puede resolverse directamente.</td><td>Calcular una política para este modelo pequeño.</td></tr>
+        <tr><td>Aprendizaje por refuerzo</td><td>Las acciones afectan el futuro y los valores o la política se aprenden mediante interacción.</td><td>Aprender respuestas sin requerir un modelo explícito.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    Como la dinámica de esta demostración es pequeña y conocida, también podría resolverse con reglas o
+    planificación. Q-learning se utiliza para observar el proceso de aprendizaje a partir de experiencia.
+  </p>
+  <h3>Ejemplo aplicado</h3>
+  <p>
+    La detección de anomalías asigna “riesgo alto”; la política usa ese estado para elegir “bloquear y
+    alertar”. La estimación y la decisión son tareas diferentes.
+  </p>
+  <p class="understanding-criterion"><strong>Lo comprendiste si…</strong> puedes indicar qué componente estima el riesgo y cuál elige la acción.</p>
+</article>

@@ -1,0 +1,25 @@
+<article class="content-section slide-ciclo">
+  <h2>Ciclo de aprendizaje por recompensas</h2>
+  <section class="learning-intro" aria-labelledby="ciclo-meta">
+    <h3 id="ciclo-meta">Punto de partida</h3>
+    <dl>
+      <div><dt>Objetivo de aprendizaje</dt><dd>Seguir una transición completa y reconocer dónde ocurre la actualización.</dd></div>
+      <div><dt>Conocimiento previo</dt><dd>Conocer el contrato del entorno 3 × 4.</dd></div>
+    </dl>
+  </section>
+  <ol class="cycle-steps">
+    <li><span aria-hidden="true">1</span>El agente observa el riesgo estimado actual.</li>
+    <li><span aria-hidden="true">2</span>La política de comportamiento selecciona una acción.</li>
+    <li><span aria-hidden="true">3</span>El entorno entrega recompensa proxy y siguiente estado.</li>
+    <li><span aria-hidden="true">4</span>Q-learning actualiza el valor de la combinación observada.</li>
+    <li><span aria-hidden="true">5</span>La interacción continúa; al quinto paso solo se trunca la visualización.</li>
+  </ol>
+  <p>
+    Como no hay terminación natural, Q-learning conserva el valor futuro al actualizar el quinto paso.
+    La tabla aprende de las acciones elegidas, aunque su política greedy pueda recomendar otra acción:
+    por eso Q-learning es <strong>off-policy</strong>.
+  </p>
+  <h3>Ejemplo aplicado</h3>
+  <p>Riesgo alto → bloquear → recompensa +8 → riesgo medio → actualización de Q(alto, bloquear).</p>
+  <p class="understanding-criterion"><strong>Lo comprendiste si…</strong> puedes ordenar estado, acción, recompensa, siguiente estado y actualización.</p>
+</article>

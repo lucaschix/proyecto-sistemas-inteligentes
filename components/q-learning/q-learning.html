@@ -1,0 +1,124 @@
+<article class="content-section slide-q-learning">
+  <h2>Algoritmo simplificado: Q-learning</h2>
+  <section class="learning-intro" aria-labelledby="q-meta">
+    <h3 id="q-meta">Punto de partida</h3>
+    <dl>
+      <div><dt>Objetivo de aprendizaje</dt><dd>Interpretar la actualización Q y experimentar con alpha y gamma.</dd></div>
+      <div><dt>Conocimiento previo</dt><dd>Seguir el ciclo estado → acción → recompensa → siguiente estado.</dd></div>
+    </dl>
+  </section>
+  <p>
+    Q-learning estima el <strong>valor Q</strong> de cada acción en un estado: el retorno descontado que
+    espera obtener al tomar esa acción y continuar con una política greedy. Es un algoritmo
+    <strong>off-policy</strong>: puede aprender de acciones distintas de las que recomienda su política greedy.
+  </p>
+  <figure class="formula">
+    <figcaption>Actualización del valor Q</figcaption>
+    <div class="formula-expression" aria-label="Q de estado s y acción a recibe Q actual más alpha por recompensa más gamma por el máximo valor Q del siguiente estado menos Q actual.">
+      Q(s, a) ← Q(s, a) + α × [r + γ × max<sub>a′</sub> Q(s′, a′) − Q(s, a)]
+    </div>
+    <p>
+      En palabras: mueve el valor Q actual una fracción <strong>alpha</strong> hacia un objetivo formado por
+      la recompensa <strong>r</strong> más el mejor valor futuro, ponderado por <strong>gamma</strong>.
+    </p>
+  </figure>
+  <div class="formula-notes">
+    <p><strong>s, a, r, s′:</strong> estado, acción, recompensa proxy y siguiente estado.</p>
+    <p><strong>Alpha (α):</strong> cuánto incorpora cada actualización, entre 0 y 1.</p>
+    <p><strong>Gamma (γ):</strong> cuánto pesan los valores futuros, entre 0 y 0,9 en la demostración.</p>
+    <p>
+      <strong>Quinto paso:</strong> el segmento se trunca, pero no termina la tarea; se conserva el término
+      de valor futuro o <em>bootstrap</em>.
+    </p>
+    <p>
+      <strong>Si existiera terminación natural:</strong> el objetivo sería solo la recompensa. Este entorno
+      no contiene transiciones terminales.
+    </p>
+  </div>
+  <aside class="worked-example" aria-labelledby="q-example-title">
+    <h3 id="q-example-title">Ejemplo numérico: 4 → 8,4</h3>
+    <p>
+      Si Q actual = 4, recompensa = 8, mejor Q futuro = 6, alpha = 0,5 y gamma = 0,8:
+      objetivo = 8 + 0,8 × 6 = 12,8; nuevo Q = 4 + 0,5 × (12,8 − 4) = <strong>8,4</strong>.
+    </p>
+  </aside>
+
+  <div class="learning-tool q-lab" id="q-lab">
+    <div class="tool-heading">
+      <div>
+        <p class="eyebrow">Experimenta</p>
+        <h3>Tabla Q interactiva</h3>
+      </div>
+      <div class="tool-actions">
+        <button class="button button-secondary" id="return-simulator" type="button" hidden>Volver a la decisión en curso</button>
+        <button class="button button-secondary" id="reset-q" type="button">Restablecer ejemplo</button>
+      </div>
+    </div>
+    <p>
+      Selecciona una celda para aplicar una transición del mismo entorno que usa el simulador.
+      Las visitas muestran cuántas experiencias recibió cada combinación. Cambiar alpha o gamma reproduce
+      en el mismo orden todo el historial desde una tabla en cero.
+    </p>
+
+    <div class="parameter-grid">
+      <label class="range-control" for="alpha-control">
+        <span><strong>Alpha</strong> · velocidad de aprendizaje</span>
+        <span class="range-row">
+          <input id="alpha-control" type="range" min="0.1" max="1" step="0.1" aria-describedby="alpha-help">
+          <output id="alpha-value" for="alpha-control"></output>
+        </span>
+        <small id="alpha-help">De 0,1 a 1. Un valor mayor mueve más la estimación con cada experiencia.</small>
+      </label>
+      <label class="range-control" for="gamma-control">
+        <span><strong>Gamma</strong> · importancia del futuro</span>
+        <span class="range-row">
+          <input id="gamma-control" type="range" min="0" max="0.9" step="0.1" aria-describedby="gamma-help">
+          <output id="gamma-value" for="gamma-control"></output>
+        </span>
+        <small id="gamma-help">De 0 a 0,9. Un valor mayor da más peso al mejor valor Q futuro.</small>
+      </label>
+    </div>
+
+    <p class="table-instruction" id="q-table-instruction">
+      Cada valor es un botón. El marcador “política greedy” identifica la acción con mayor Q en cada estado.
+      Con inicialización en cero, una acción aún no visitada puede aparecer como greedy frente a acciones penalizadas.
+    </p>
+    <div
+      class="table-wrap"
+      role="region"
+      aria-label="Tabla Q interactiva; desplázate horizontalmente para consultar todas las acciones"
+      tabindex="0"
+    >
+      <table class="q-table" aria-describedby="q-table-instruction">
+        <caption>Selecciona una combinación de estado y acción para entrenarla</caption>
+        <thead>
+          <tr>
+            <th scope="col">Estado</th>
+            <th scope="col">Permitir</th>
+            <th scope="col">Observar</th>
+            <th scope="col">Bloquear</th>
+            <th scope="col">Bloquear y alertar</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <section class="policy-summary" aria-labelledby="policy-title">
+      <h4 id="policy-title">Política greedy estimada</h4>
+      <ul id="q-policy"></ul>
+      <p>Esta política elige el mayor valor Q; las decisiones del simulador siguen siendo tuyas.</p>
+    </section>
+    <details class="history-panel">
+      <summary>Historial de experiencias (<span id="q-history-count">0</span>)</summary>
+      <p>Orden usado para reentrenar la tabla cuando cambian alpha o gamma.</p>
+      <ol id="q-history"></ol>
+    </details>
+    <p class="status-note" id="q-status" role="status" aria-live="polite"></p>
+  </div>
+  <h3>Ejemplo aplicado</h3>
+  <p>
+    Entrenar “riesgo alto → bloquear” actualiza solo esa celda en ese paso. Otras celdas pueden cambiar al
+    variar parámetros porque la aplicación reproduce todas las experiencias almacenadas.
+  </p>
+  <p class="understanding-criterion"><strong>Lo comprendiste si…</strong> puedes explicar por qué recompensa inmediata y valor Q no son la misma cantidad.</p>
+</article>

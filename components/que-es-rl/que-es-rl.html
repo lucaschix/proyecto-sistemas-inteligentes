@@ -1,0 +1,31 @@
+<article class="content-section slide-que-es-rl">
+  <h2>Qué es el Aprendizaje por Refuerzo</h2>
+  <section class="learning-intro" aria-labelledby="rl-meta">
+    <h3 id="rl-meta">Punto de partida</h3>
+    <dl>
+      <div><dt>Objetivo de aprendizaje</dt><dd>Explicar cómo un agente aprende una política a partir de consecuencias.</dd></div>
+      <div><dt>Conocimiento previo</dt><dd>Reconocer que la aplicación es una demostración educativa.</dd></div>
+    </dl>
+  </section>
+  <p>
+    En aprendizaje por refuerzo, un <strong>agente</strong> observa una situación, elige una acción y recibe
+    del <strong>entorno</strong> una recompensa y una nueva situación. Su objetivo es aprender una
+    <strong>política</strong> que maximice el retorno esperado, no acertar una etiqueta aislada.
+  </p>
+  <p>
+    La <strong>recompensa proxy</strong> evalúa un paso. El <strong>retorno descontado</strong> combina
+    recompensas presentes y futuras, dando a las futuras un peso definido por gamma. Por eso una acción con
+    recompensa inmediata alta no siempre tiene el mayor valor a largo plazo.
+  </p>
+  <aside class="callout" aria-label="Idea central">
+    <h3>Idea central</h3>
+    <p>El agente aprende valores a partir de transiciones; explorar en sistemas reales puede ser costoso o peligroso.</p>
+  </aside>
+  <h3>Ejemplo aplicado</h3>
+  <p>
+    En riesgo medio, observar entrega +6 y bloquear entrega +1; ambas acciones llevan a riesgo bajo, pero
+    bloquear incorpora un impacto de disponibilidad. En este modelo pequeño, gamma cambia la magnitud de
+    los valores Q, aunque no cambia cuál acción termina siendo óptima.
+  </p>
+  <p class="understanding-criterion"><strong>Lo comprendiste si…</strong> puedes diferenciar recompensa inmediata, retorno y política.</p>
+</article>

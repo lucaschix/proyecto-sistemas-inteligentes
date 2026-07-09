@@ -1,0 +1,7 @@
+.slide-comparacion table {
+  min-width: 42rem;
+}
+
+.slide-comparacion tbody tr:last-child {
+  background: var(--color-action-soft);
+}

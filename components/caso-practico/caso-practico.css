@@ -1,0 +1,6 @@
+.slide-caso-practico .case-question {
+  padding: var(--space-4);
+  background: var(--color-warning-soft);
+  border: 1px solid var(--color-selected-mark);
+  border-radius: var(--radius-md);
+}

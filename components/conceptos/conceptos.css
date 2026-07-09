@@ -1,0 +1,18 @@
+.slide-conceptos .concept-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-4);
+}
+
+.slide-conceptos .concept-list div {
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+@media (max-width: 720px) {
+  .slide-conceptos .concept-list {
+    grid-template-columns: 1fr;
+  }
+}

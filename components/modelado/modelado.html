@@ -1,0 +1,31 @@
+<article class="content-section slide-modelado">
+  <h2>Modelado del caso en términos de RL</h2>
+  <section class="learning-intro" aria-labelledby="modelado-meta">
+    <h3 id="modelado-meta">Punto de partida</h3>
+    <dl>
+      <div><dt>Objetivo de aprendizaje</dt><dd>Describir el contrato exacto del entorno educativo.</dd></div>
+      <div><dt>Conocimiento previo</dt><dd>Reconocer los conceptos fundamentales de RL.</dd></div>
+    </dl>
+  </section>
+  <p>El caso se representa como una tarea continuante, discreta y determinista:</p>
+  <ul class="model-list">
+    <li><strong>Estado observado:</strong> riesgo ya estimado —bajo, medio o alto—; cada segmento inicia en alto.</li>
+    <li><strong>Acciones:</strong> permitir, observar, bloquear o bloquear y alertar.</li>
+    <li><strong>Dinámica:</strong> las 12 combinaciones estado–acción tienen un siguiente estado fijo.</li>
+    <li><strong>Recompensa proxy:</strong> combina seguridad, disponibilidad e impacto operativo.</li>
+    <li><strong>Descuento:</strong> gamma está limitado entre 0 y 0,9 en esta demostración cíclica.</li>
+    <li><strong>Terminación:</strong> no existe un final natural; el entorno siempre entrega otro estado.</li>
+    <li><strong>Truncamiento:</strong> la interfaz corta la observación después de cinco pasos.</li>
+    <li><strong>Evaluación:</strong> métricas auxiliares simuladas se muestran separadas de la recompensa.</li>
+  </ul>
+  <aside class="callout" aria-label="Simplificaciones del modelo">
+    <h3>Simplificaciones explícitas</h3>
+    <p>El estado no contiene historial, las transiciones no son aleatorias y la recompensa fue definida manualmente. Por ello, el modelo no representa la incertidumbre de una red real.</p>
+  </aside>
+  <h3>Ejemplo aplicado</h3>
+  <p>
+    Desde riesgo alto, “bloquear” combina +9 de seguridad, −1 de disponibilidad y 0 de impacto operativo:
+    entrega +8, lleva a riesgo medio y registra un riesgo alto contenido.
+  </p>
+  <p class="understanding-criterion"><strong>Lo comprendiste si…</strong> puedes explicar la diferencia entre terminación natural y truncamiento al quinto paso.</p>
+</article>

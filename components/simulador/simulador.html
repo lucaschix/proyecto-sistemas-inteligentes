@@ -1,0 +1,84 @@
+<article class="content-section slide-simulador">
+  <h2>Simulador de decisiones</h2>
+  <section class="learning-intro" aria-labelledby="simulador-meta">
+    <h3 id="simulador-meta">Punto de partida</h3>
+    <dl>
+      <div><dt>Objetivo de aprendizaje</dt><dd>Aplicar decisiones durante un segmento y contrastar recompensa, métricas y valor Q.</dd></div>
+      <div><dt>Conocimiento previo</dt><dd>Interpretar la actualización Q y el truncamiento.</dd></div>
+    </dl>
+  </section>
+  <p>
+    Recorre un <strong>segmento de cinco pasos</strong> de una tarea continuante. El estado inicia en riesgo
+    alto. Cada acción determina de forma fija la recompensa proxy y el siguiente estado; tú actúas como
+    política de comportamiento mientras Q-learning actualiza la tabla.
+  </p>
+  <p class="simulator-disclaimer">
+    Es una demostración determinista con riesgo ya estimado: no detecta ataques, no usa datos reales y no
+    recomienda acciones para una red.
+  </p>
+
+  <div class="learning-tool simulator">
+    <div class="simulator-progress">
+      <p class="eyebrow" id="scenario-progress"></p>
+      <p><strong>Suma no descontada:</strong> <output id="total-score">0</output></p>
+    </div>
+
+    <div class="scenario-card">
+      <div class="risk-badge" id="scenario-risk"></div>
+      <h3 id="scenario-title" tabindex="-1"></h3>
+      <p id="scenario-description"></p>
+      <dl class="event-facts" id="scenario-facts"></dl>
+    </div>
+
+    <fieldset class="decision-fieldset">
+      <legend>¿Qué acción tomarías?</legend>
+      <div class="action-grid">
+        <button class="action-button" type="button" data-action="permitir">Permitir</button>
+        <button class="action-button" type="button" data-action="observar">Observar</button>
+        <button class="action-button" type="button" data-action="bloquear">Bloquear</button>
+        <button class="action-button" type="button" data-action="bloquear_alertar">Bloquear y alertar</button>
+      </div>
+    </fieldset>
+
+    <section
+      class="feedback-card"
+      id="decision-feedback"
+      role="region"
+      aria-labelledby="feedback-heading"
+      tabindex="-1"
+      hidden
+    >
+      <h3 id="feedback-heading">Resultado de la decisión</h3>
+      <p class="feedback-result" id="feedback-result"></p>
+      <p id="feedback-explanation"></p>
+      <p class="feedback-transition" id="feedback-transition"></p>
+      <p class="feedback-q" id="feedback-q"></p>
+    </section>
+
+    <details class="metrics-panel">
+      <summary>Ver métricas auxiliares del segmento</summary>
+      <dl class="episode-metrics" aria-label="Métricas auxiliares simuladas del segmento">
+        <div><dt>Riesgo alto contenido</dt><dd><output data-metric="highRiskContained">0</output></dd></div>
+        <div><dt>Riesgo alto no contenido</dt><dd><output data-metric="highRiskUncontained">0</output></dd></div>
+        <div><dt>Eventos legítimos bloqueados</dt><dd><output data-metric="legitimateEventsBlocked">0</output></dd></div>
+        <div><dt>Impactos de disponibilidad</dt><dd><output data-metric="availabilityImpacts">0</output></dd></div>
+        <div><dt>Alertas innecesarias</dt><dd><output data-metric="unnecessaryAlerts">0</output></dd></div>
+        <div><dt>Escaladas de medio a alto</dt><dd><output data-metric="mediumToHighEscalations">0</output></dd></div>
+      </dl>
+    </details>
+
+    <div class="simulator-actions">
+      <button class="button" id="next-scenario" type="button" hidden>Continuar</button>
+      <button class="button button-secondary" id="restart-simulator" type="button" aria-describedby="restart-status">Iniciar nuevo segmento</button>
+      <button class="button button-secondary" id="view-q-table" type="button">Ver tabla Q</button>
+    </div>
+    <p class="status-note" id="restart-status" role="status" aria-live="polite"></p>
+  </div>
+  <h3>Ejemplo aplicado: cómo interpretar el resultado</h3>
+  <p>
+    La suma no descontada sirve como resumen visible del segmento. Q-learning, en cambio, estima retorno
+    descontado en cada valor Q. Las métricas auxiliares simuladas permiten detectar errores que una suma
+    puede ocultar; también son reglas diseñadas, no mediciones de una red real.
+  </p>
+  <p class="understanding-criterion"><strong>Lo comprendiste si…</strong> puedes comparar la recompensa proxy de una decisión con sus métricas auxiliares y su cambio de valor Q.</p>
+</article>

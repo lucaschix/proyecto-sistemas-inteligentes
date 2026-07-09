@@ -1,0 +1,30 @@
+<article class="content-section slide-conceptos">
+  <h2>Conceptos fundamentales de RL</h2>
+  <section class="learning-intro" aria-labelledby="conceptos-meta">
+    <h3 id="conceptos-meta">Punto de partida</h3>
+    <dl>
+      <div><dt>Objetivo de aprendizaje</dt><dd>Relacionar los elementos de un proceso de decisión de Markov.</dd></div>
+      <div><dt>Conocimiento previo</dt><dd>Entender por qué las acciones tienen consecuencias sucesivas.</dd></div>
+    </dl>
+  </section>
+  <p>El modelo educativo combina los siguientes conceptos:</p>
+  <dl class="concept-list">
+    <div><dt>Agente</dt><dd>Sistema que toma decisiones frente a eventos de red.</dd></div>
+    <div><dt>Entorno</dt><dd>Modelo 3 × 4 que responde con recompensa y siguiente estado.</dd></div>
+    <div><dt>Estado observado</dt><dd>Riesgo ya estimado: bajo, medio o alto.</dd></div>
+    <div><dt>Acción</dt><dd>Decisión como permitir, observar, bloquear o bloquear y alertar.</dd></div>
+    <div><dt>Transición</dt><dd>Regla determinista que produce el siguiente nivel de riesgo.</dd></div>
+    <div><dt>Recompensa proxy</dt><dd>Señal inmediata de seguridad, disponibilidad e impacto operativo.</dd></div>
+    <div><dt>Retorno descontado</dt><dd>Suma de recompensas donde gamma reduce el peso de las futuras.</dd></div>
+    <div><dt>Valor Q</dt><dd>Estimación del retorno de elegir una acción en un estado y continuar.</dd></div>
+    <div><dt>Política greedy</dt><dd>Regla que elige una acción con el mayor valor Q estimado.</dd></div>
+    <div><dt>Terminación</dt><dd>Final natural definido por la tarea; este entorno no contiene estados terminales.</dd></div>
+    <div><dt>Truncamiento</dt><dd>Corte por un límite externo; aquí ocurre después del quinto paso y conserva el valor futuro.</dd></div>
+  </dl>
+  <h3>Ejemplo aplicado</h3>
+  <p>
+    “Riesgo alto” es el estado; “bloquear” es la acción; +8 es la recompensa proxy; “riesgo medio” es el
+    siguiente estado. Q-learning usa la transición completa para actualizar el valor Q.
+  </p>
+  <p class="understanding-criterion"><strong>Lo comprendiste si…</strong> puedes clasificar correctamente estado, acción, recompensa y siguiente estado en una transición.</p>
+</article>

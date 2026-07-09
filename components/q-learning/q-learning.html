@@ -51,9 +51,15 @@
       </div>
       <div class="tool-actions">
         <button class="button button-secondary" id="return-simulator" type="button" hidden>Volver a la decisión en curso</button>
-        <button class="button button-secondary" id="reset-q" type="button">Restablecer ejemplo</button>
+        <button class="button button-secondary" id="reset-q" type="button" aria-describedby="q-reset-note">
+          Restablecer historial y parámetros
+        </button>
       </div>
     </div>
+    <p class="reset-note" id="q-reset-note">
+      Este restablecimiento vuelve a las seis experiencias iniciales, restaura alpha y gamma, y descarta
+      experiencias añadidas desde la tabla o el simulador.
+    </p>
     <p>
       Selecciona una celda para aplicar una transición del mismo entorno que usa el simulador.
       Las visitas muestran cuántas experiencias recibió cada combinación. Cambiar alpha o gamma reproduce
@@ -82,14 +88,16 @@
     <p class="table-instruction" id="q-table-instruction">
       Cada valor es un botón. El marcador “política greedy” identifica la acción con mayor Q en cada estado.
       Con inicialización en cero, una acción aún no visitada puede aparecer como greedy frente a acciones penalizadas.
+      Si no ves todas las acciones, desplázate horizontalmente dentro de la tabla.
     </p>
+    <p class="table-scroll-hint" id="q-table-scroll-hint">Desplazamiento horizontal disponible: arrastra o usa Mayús + rueda para ver todas las acciones.</p>
     <div
       class="table-wrap"
       role="region"
       aria-label="Tabla Q interactiva; desplázate horizontalmente para consultar todas las acciones"
       tabindex="0"
     >
-      <table class="q-table" aria-describedby="q-table-instruction">
+      <table class="q-table" aria-describedby="q-table-instruction q-table-scroll-hint">
         <caption>Selecciona una combinación de estado y acción para entrenarla</caption>
         <thead>
           <tr>
@@ -103,6 +111,7 @@
         <tbody></tbody>
       </table>
     </div>
+    <p class="status-note" id="q-status" role="status" aria-live="polite" aria-atomic="true"></p>
     <section class="policy-summary" aria-labelledby="policy-title">
       <h4 id="policy-title">Política greedy estimada</h4>
       <ul id="q-policy"></ul>
@@ -110,10 +119,10 @@
     </section>
     <details class="history-panel">
       <summary>Historial de experiencias (<span id="q-history-count">0</span>)</summary>
+      <p id="q-history-summary"></p>
       <p>Orden usado para reentrenar la tabla cuando cambian alpha o gamma.</p>
       <ol id="q-history"></ol>
     </details>
-    <p class="status-note" id="q-status" role="status" aria-live="polite"></p>
   </div>
   <h3>Ejemplo aplicado</h3>
   <p>

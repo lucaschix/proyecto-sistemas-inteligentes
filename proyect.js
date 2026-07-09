@@ -32,6 +32,7 @@ const loadedStyles = new Map();
 const loadedModules = new Map();
 const styleAttempts = new Map();
 const moduleAttempts = new Map();
+const assetVersion = Date.now();
 let activeSlide = null;
 let loadSequence = 0;
 let activeCleanup = null;
@@ -170,7 +171,7 @@ function ensureStylesheet(slide) {
       const attempt = styleAttempts.get(slide) ?? 0;
       const link = document.createElement("link");
       link.rel = "stylesheet";
-      link.href = `components/${slide}/${slide}.css${attempt ? `?retry=${attempt}` : ""}`;
+      link.href = `components/${slide}/${slide}.css?v=${assetVersion}${attempt ? `&retry=${attempt}` : ""}`;
       link.dataset.componentStyle = slide;
       link.addEventListener("load", resolve, { once: true });
       link.addEventListener("error", () => {
@@ -189,7 +190,7 @@ function ensureStylesheet(slide) {
 async function getModule(slide) {
   if (!loadedModules.has(slide)) {
     const attempt = moduleAttempts.get(slide) ?? 0;
-    const suffix = attempt ? `?retry=${attempt}` : "";
+    const suffix = `?v=${assetVersion}${attempt ? `&retry=${attempt}` : ""}`;
     loadedModules.set(slide, import(`./components/${slide}/${slide}.js${suffix}`));
   }
   try {
@@ -284,7 +285,7 @@ async function loadSlide(requestedSlide, options = {}) {
 
   try {
     const [response, component] = await Promise.all([
-      fetch(`components/${slide}/${slide}.html`),
+      fetch(`components/${slide}/${slide}.html?v=${assetVersion}`),
       getModule(slide),
       ensureStylesheet(slide)
     ]);
@@ -296,17 +297,21 @@ async function loadSlide(requestedSlide, options = {}) {
     staging.dataset.slide = slide;
     staging.innerHTML = markup;
     addSlideProgress(staging, slide);
-    const nextCleanup = await component.mount?.(staging, componentContext);
     appendSlideNavigation(staging, slide);
+    if (sequence !== loadSequence) {
+      return;
+    }
+
+    activeCleanup?.();
+    host.replaceChildren(...staging.childNodes);
+    const nextCleanup = await component.mount?.(host, componentContext);
     if (sequence !== loadSequence) {
       if (typeof nextCleanup === "function") nextCleanup();
       return;
     }
 
-    activeCleanup?.();
     activeCleanup = typeof nextCleanup === "function" ? nextCleanup : null;
     activeSlide = slide;
-    host.replaceChildren(...staging.childNodes);
     host.setAttribute("aria-busy", "false");
     hideRouteStatus();
     setCurrentLink(slide);

@@ -16,7 +16,7 @@ function experience(state, action, overrides = {}) {
     action,
     ...getOutcome(state, action),
     truncated: false,
-    source: "test",
+    source: "table",
     ...overrides
   };
 }
@@ -159,9 +159,13 @@ test("visitas, política y reset son reproducibles", () => {
   const initial = store.getSnapshot();
   assert.equal(initial.experienceCount, 6);
   assert.equal(initial.visits.bajo.permitir, 2);
+  assert.deepEqual(initial.sourceCounts, { example: 6, table: 0, simulator: 0 });
 
   store.update(experience("alto", "permitir"));
+  store.setParameters(0.8, 0.3);
   assert.equal(store.getSnapshot().experienceCount, 7);
+  assert.equal(store.getSnapshot().alpha, 0.8);
+  assert.equal(store.getSnapshot().gamma, 0.3);
 
   store.reset();
   assert.deepEqual(store.getSnapshot(), initial);
@@ -240,7 +244,9 @@ test("la política óptima no prolonga el riesgo alto para cosechar recompensas"
 test("rechaza estados, acciones, recompensas y parámetros inválidos", () => {
   const store = createQStore({ initialExperiences: [] });
   assert.throws(() => store.setParameters(0, 0.8), /Alpha/);
+  assert.throws(() => store.setParameters(1.1, 0.8), /Alpha/);
   assert.throws(() => store.setParameters(0.5, -0.1), /Gamma/);
+  assert.throws(() => store.setParameters(0.5, 1), /Gamma/);
   assert.throws(() => store.update({ state: "otro", action: "permitir", reward: 1 }), /Estado/);
   assert.throws(
     () => store.update({ state: "bajo", action: "otra", reward: 1, nextState: "bajo" }),
@@ -250,4 +256,42 @@ test("rechaza estados, acciones, recompensas y parámetros inválidos", () => {
     () => store.update({ state: "bajo", action: "permitir", reward: Number.NaN, nextState: "bajo" }),
     /finito/
   );
+  assert.throws(
+    () =>
+      store.update({
+        state: "bajo",
+        action: "permitir",
+        reward: 1,
+        nextState: "otro",
+        terminated: false,
+        source: "table"
+      }),
+    /Siguiente estado/
+  );
+  assert.throws(
+    () => store.update(experience("bajo", "permitir", { terminated: true, truncated: true })),
+    /terminal y truncada/
+  );
+  assert.throws(
+    () => store.update(experience("bajo", "permitir", { terminated: "false" })),
+    /booleanos/
+  );
+  assert.throws(
+    () => store.update(experience("bajo", "permitir", { source: "manual" })),
+    /fuente/
+  );
+  assert.throws(
+    () => store.update({ state: "bajo", action: "permitir", reward: 1, nextState: "bajo" }),
+    /fuente/
+  );
+});
+
+test("el historial conserva fuentes separadas de ejemplo, tabla y simulador", () => {
+  const store = createQStore();
+  store.update(experience("alto", "bloquear", { source: "table" }));
+  store.update(experience("medio", "observar", { source: "simulator" }));
+
+  const snapshot = store.getSnapshot();
+  assert.deepEqual(snapshot.sourceCounts, { example: 6, table: 1, simulator: 1 });
+  assert.deepEqual(snapshot.history.slice(-2).map(({ source }) => source), ["table", "simulator"]);
 });

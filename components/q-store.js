@@ -4,14 +4,22 @@ import {
   stateOrder
 } from "./rl-model.js";
 
-export function createQStore({ initialExperiences = createExampleExperiences() } = {}) {
+const allowedExperienceSources = new Set(["example", "table", "simulator"]);
+const defaultAlpha = 0.5;
+const defaultGamma = 0.8;
+
+export function createQStore({
+  initialExperiences = createExampleExperiences(),
+  initialAlpha = defaultAlpha,
+  initialGamma = defaultGamma
+} = {}) {
   const listeners = new Set();
-  const resetExperiences = structuredClone(initialExperiences);
-  let alpha = 0.5;
-  let gamma = 0.8;
+  let alpha;
+  let gamma;
   let values = createEmptyTable();
   let visits = createEmptyTable();
-  let experiences = structuredClone(resetExperiences);
+  let resetExperiences;
+  let experiences;
 
   function createEmptyTable() {
     return Object.fromEntries(
@@ -32,17 +40,38 @@ export function createQStore({ initialExperiences = createExampleExperiences() }
   }
 
   function normalizeExperience(experience) {
+    if (!experience || typeof experience !== "object") {
+      throw new TypeError("La experiencia debe ser un objeto.");
+    }
     if (!stateOrder.includes(experience.state)) throw new RangeError(`Estado desconocido: ${experience.state}.`);
     if (!actionOrder.includes(experience.action)) throw new RangeError(`Acción desconocida: ${experience.action}.`);
     if (!Number.isFinite(experience.reward)) throw new TypeError("La recompensa debe ser un número finito.");
-    if (!experience.terminated && !stateOrder.includes(experience.nextState)) {
+    if (!allowedExperienceSources.has(experience.source)) {
+      throw new RangeError("La fuente de la experiencia debe ser example, table o simulator.");
+    }
+    if (
+      (experience.terminated !== undefined && typeof experience.terminated !== "boolean") ||
+      (experience.truncated !== undefined && typeof experience.truncated !== "boolean")
+    ) {
+      throw new TypeError("terminated y truncated deben ser booleanos cuando se informan.");
+    }
+
+    const terminated = experience.terminated ?? false;
+    const truncated = experience.truncated ?? false;
+    if (terminated && truncated) {
+      throw new RangeError("Una experiencia no puede ser terminal y truncada al mismo tiempo.");
+    }
+    if (!terminated && !stateOrder.includes(experience.nextState)) {
+      throw new RangeError(`Siguiente estado desconocido: ${experience.nextState}.`);
+    }
+    if (terminated && experience.nextState !== undefined && !stateOrder.includes(experience.nextState)) {
       throw new RangeError(`Siguiente estado desconocido: ${experience.nextState}.`);
     }
 
     return {
       ...structuredClone(experience),
-      terminated: Boolean(experience.terminated),
-      truncated: Boolean(experience.truncated)
+      terminated,
+      truncated
     };
   }
 
@@ -59,6 +88,11 @@ export function createQStore({ initialExperiences = createExampleExperiences() }
   }
 
   function snapshot() {
+    const sourceCounts = { example: 0, table: 0, simulator: 0 };
+    experiences.forEach(({ source }) => {
+      sourceCounts[source] += 1;
+    });
+
     return {
       states: [...stateOrder],
       actions: [...actionOrder],
@@ -68,6 +102,7 @@ export function createQStore({ initialExperiences = createExampleExperiences() }
       visits: structuredClone(visits),
       policy: greedyPolicy(),
       experienceCount: experiences.length,
+      sourceCounts,
       history: experiences.map(({ state, action, reward, nextState, terminated, truncated, source }) => ({
         state,
         action,
@@ -128,6 +163,11 @@ export function createQStore({ initialExperiences = createExampleExperiences() }
     listeners.forEach((listener) => listener(current, detail));
   }
 
+  const initialParameters = validateParameters(initialAlpha, initialGamma);
+  alpha = initialParameters.alpha;
+  gamma = initialParameters.gamma;
+  resetExperiences = initialExperiences.map(normalizeExperience);
+  experiences = structuredClone(resetExperiences);
   recalculateValues();
 
   return {
@@ -135,10 +175,12 @@ export function createQStore({ initialExperiences = createExampleExperiences() }
     setParameters(nextAlpha, nextGamma) {
       const parsed = validateParameters(nextAlpha, nextGamma);
       if (parsed.alpha === alpha && parsed.gamma === gamma) return false;
+      const previousAlpha = alpha;
+      const previousGamma = gamma;
       alpha = parsed.alpha;
       gamma = parsed.gamma;
       const changedCells = recalculateValues();
-      notify({ type: "parameters", changedCells });
+      notify({ type: "parameters", changedCells, previousAlpha, previousGamma });
       return true;
     },
     update(rawExperience) {
@@ -148,15 +190,27 @@ export function createQStore({ initialExperiences = createExampleExperiences() }
       const detail = {
         type: "update",
         ...result,
-        changedCells: [{ state: result.state, action: result.action }]
+        changedCells: [{ state: result.state, action: result.action, current: result.current, updated: result.updated }]
       };
       notify(detail);
       return detail;
     },
     reset() {
+      const previousAlpha = alpha;
+      const previousGamma = gamma;
+      const previousExperienceCount = experiences.length;
+      alpha = initialParameters.alpha;
+      gamma = initialParameters.gamma;
       experiences = structuredClone(resetExperiences);
       const changedCells = recalculateValues();
-      notify({ type: "reset", changedCells });
+      notify({
+        type: "reset",
+        changedCells,
+        previousAlpha,
+        previousGamma,
+        previousExperienceCount,
+        restoredParameters: { ...initialParameters }
+      });
     },
     subscribe(listener) {
       listeners.add(listener);

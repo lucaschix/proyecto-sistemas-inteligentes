@@ -75,3 +75,22 @@ test("la tabla Q usa fuentes canónicas y feedback de parámetros", async () => 
   assert.match(styles, /\.range-control\.is-pending/);
   assert.match(styles, /\.history-source/);
 });
+
+test("las secciones introductorias integran videos Manim responsivos", async () => {
+  const [rlMarkup, conceptsMarkup, styles, rlManim, conceptsManim] = await Promise.all([
+    read("components/que-es-rl/que-es-rl.html"),
+    read("components/conceptos/conceptos.html"),
+    read("style.css"),
+    read("components/que-es-rl/que-es-rl-manim.py"),
+    read("components/conceptos/conceptos-manim.py")
+  ]);
+
+  assert.match(rlMarkup, /<figure class="learning-video">/);
+  assert.match(rlMarkup, /<video controls preload="metadata" width="1280" height="720">/);
+  assert.match(rlMarkup, /src="video\/que-es-rl\.mp4"/);
+  assert.match(conceptsMarkup, /<figure class="learning-video">/);
+  assert.match(conceptsMarkup, /src="video\/conceptos\.mp4"/);
+  assert.match(styles, /\.learning-video video/);
+  assert.match(rlManim, /class QueEsRLCycle\(Scene\)/);
+  assert.match(conceptsManim, /class ConceptosTransicion\(Scene\)/);
+});

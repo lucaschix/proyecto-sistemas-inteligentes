@@ -275,6 +275,27 @@ dd {
   margin-bottom: 0;
 }
 
+.learning-video {
+  max-width: var(--measure);
+  margin: var(--space-5) 0;
+}
+
+.learning-video video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  background: var(--color-code);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+}
+
+.learning-video figcaption {
+  margin-top: var(--space-2);
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+}
+
 .table-wrap {
   width: 100%;
   overflow: auto;

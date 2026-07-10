@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Cache-Control" content="no-store, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Aprendizaje por Refuerzo y decisiones ante riesgo de red</title>
+  <link rel="stylesheet" href="style.css?v=20260710a">
+  <script src="proyect.js?v=20260710a" type="module"></script>
+  <!-- DIDACTIC_ENHANCEMENTS_HEAD_START -->
+  <link rel="stylesheet" href="didactic/didactic-enhancements.css?v=20260710">
+  <!-- DIDACTIC_ENHANCEMENTS_HEAD_END -->
+</head>
+<body>
+  <a class="skip-link" href="#slide-host">Saltar al contenido principal</a>
+  <header class="site-header">
+    <div class="page-shell hero-layout">
+      <div class="hero-copy">
+        <p class="eyebrow">Cuaderno de laboratorio · Simulación educativa</p>
+        <h1>Aprendizaje por Refuerzo aplicado a decisiones ante riesgo de red</h1>
+        <p class="lead">
+          Aprende cómo un agente recibe un riesgo estimado, toma decisiones y actualiza sus valores a partir
+          de recompensas proxy.
+        </p>
+      </div>
+
+      <div class="learning-map" aria-hidden="true">
+        <span class="map-node">Agente</span>
+        <span class="map-node">Estado</span>
+        <span class="map-node">Acción</span>
+        <span class="map-node">Recompensa</span>
+      </div>
+    </div>
+
+    <div class="page-shell learning-overview" aria-label="Resumen del recorrido">
+      <div class="overview-item">
+        <strong>10 secciones</strong>
+        <span>Ruta guiada desde conceptos hasta laboratorios interactivos.</span>
+      </div>
+      <div class="overview-item">
+        <strong>4 videos Manim</strong>
+        <span>Apoyos visuales para ciclos, transición y tabla Q.</span>
+      </div>
+      <div class="overview-item">
+        <strong>Tabla Q</strong>
+        <span>Valores actualizados con estado, acción y recompensa.</span>
+      </div>
+      <div class="overview-item">
+        <strong>Simulador</strong>
+        <span>Decisiones paso a paso ante riesgo de red.</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="learning-layout">
+    <aside class="side-menu">
+      <button
+        class="section-menu-toggle"
+        id="section-menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="site-nav"
+      >
+        <span>Secciones del cuaderno</span>
+        <span class="menu-toggle-icon" aria-hidden="true">⌄</span>
+      </button>
+      <p class="menu-label">Secciones del cuaderno</p>
+      <nav class="site-nav" id="site-nav" aria-label="Secciones principales">
+        <a class="section-link" href="#proposito" data-slide="proposito" aria-current="page">Propósito de la aplicación</a>
+        <a class="section-link" href="#que-es-rl" data-slide="que-es-rl">Qué es el aprendizaje por refuerzo</a>
+        <a class="section-link" href="#comparacion" data-slide="comparacion">Comparación con otros enfoques</a>
+        <a class="section-link" href="#caso-practico" data-slide="caso-practico">Caso práctico</a>
+        <a class="section-link" href="#conceptos" data-slide="conceptos">Conceptos fundamentales</a>
+        <a class="section-link" href="#modelado" data-slide="modelado">Modelado del entorno</a>
+        <a class="section-link" href="#ciclo" data-slide="ciclo">Ciclo de interacción</a>
+        <a class="section-link" href="#q-learning" data-slide="q-learning">Q-learning y tabla Q</a>
+        <a class="section-link" href="#simulador" data-slide="simulador">Simulador de decisiones</a>
+        <a class="section-link section-link-featured" href="#robot-repartidor" data-slide="robot-repartidor">Laboratorio: robot repartidor</a>
+      </nav>
+    </aside>
+
+    <main class="content-main">
+      <div class="route-status" id="route-status" role="status" aria-live="polite" hidden></div>
+      <div id="slide-host" aria-busy="true">
+        <p class="loading-state" role="status">Cargando contenido…</p>
+      </div>
+    </main>
+  </div>
+
+  <noscript>
+    <p class="noscript-message">Activa JavaScript para navegar por los componentes interactivos.</p>
+  </noscript>
+  <!-- DIDACTIC_ENHANCEMENTS_BODY_START -->
+  <script type="module" src="didactic/didactic-enhancements.js?v=20260710"></script>
+  <!-- DIDACTIC_ENHANCEMENTS_BODY_END -->
+</body>
+</html>

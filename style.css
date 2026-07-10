@@ -2245,6 +2245,16 @@ th {
   font-size: 0.84rem;
 }
 
+.footer-layout .asset-attribution {
+  margin-top: 0.85rem;
+  color: rgb(184 205 221 / 0.78);
+}
+
+.asset-attribution a {
+  color: var(--dashboard-lime);
+  font-weight: 750;
+}
+
 .footer-links {
   display: grid;
   min-width: 10rem;
@@ -2541,3 +2551,5 @@ th {
     scroll-behavior: auto;
   }
 }
+
+@import url("assets/learning-visuals/learning-visuals.css");

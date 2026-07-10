@@ -7,13 +7,31 @@
       <div><dt>Conocimiento previo</dt><dd>Conocer el contrato del entorno 3 × 4.</dd></div>
     </dl>
   </section>
-  <ol class="cycle-steps">
-    <li><span aria-hidden="true">1</span>El agente observa el riesgo estimado actual.</li>
-    <li><span aria-hidden="true">2</span>La política de comportamiento selecciona una acción.</li>
-    <li><span aria-hidden="true">3</span>El entorno entrega recompensa proxy y siguiente estado.</li>
-    <li><span aria-hidden="true">4</span>Q-learning actualiza el valor de la combinación observada.</li>
-    <li><span aria-hidden="true">5</span>La interacción continúa; al quinto paso solo se trunca la visualización.</li>
-  </ol>
+  <figure class="learning-visual learning-visual--diagram">
+    <img
+      src="assets/learning-visuals/diagrams/reinforcement-learning-cycle-white.webp"
+      alt="Diagrama del ciclo de aprendizaje por refuerzo: el agente observa el estado del entorno, ejecuta una acción y recibe una recompensa y un nuevo estado."
+      width="960"
+      height="928"
+      decoding="async"
+    >
+    <figcaption>
+      El ciclo se repite: observar, actuar, recibir consecuencias y actualizar lo aprendido.
+      <span class="learning-visual-credit">
+        Diagrama de Megajuice, <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>.
+      </span>
+    </figcaption>
+  </figure>
+  <details class="image-details">
+    <summary>Ver los pasos detallados del ciclo</summary>
+    <ol class="cycle-steps">
+      <li><span aria-hidden="true">1</span>El agente observa el riesgo estimado actual.</li>
+      <li><span aria-hidden="true">2</span>La política de comportamiento selecciona una acción.</li>
+      <li><span aria-hidden="true">3</span>El entorno entrega recompensa proxy y siguiente estado.</li>
+      <li><span aria-hidden="true">4</span>Q-learning actualiza el valor de la combinación observada.</li>
+      <li><span aria-hidden="true">5</span>La interacción continúa; al quinto paso solo se trunca la visualización.</li>
+    </ol>
+  </details>
   <figure class="learning-video">
     <video controls preload="metadata" width="1280" height="720" aria-describedby="ciclo-video-caption ciclo-video-description">
       <source src="video/ciclo.mp4" type="video/mp4">

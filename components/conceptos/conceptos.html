@@ -7,20 +7,56 @@
       <div><dt>Conocimiento previo</dt><dd>Entender por qué las acciones tienen consecuencias sucesivas.</dd></div>
     </dl>
   </section>
-  <p>El modelo educativo combina los siguientes conceptos:</p>
-  <dl class="concept-list">
-    <div><dt>Agente</dt><dd>Sistema que toma decisiones frente a eventos de red.</dd></div>
-    <div><dt>Entorno</dt><dd>Modelo 3 × 4 que responde con recompensa y siguiente estado.</dd></div>
-    <div><dt>Estado observado</dt><dd>Riesgo ya estimado: bajo, medio o alto.</dd></div>
-    <div><dt>Acción</dt><dd>Decisión como permitir, observar, bloquear o bloquear y alertar.</dd></div>
-    <div><dt>Transición</dt><dd>Regla determinista que produce el siguiente nivel de riesgo.</dd></div>
-    <div><dt>Recompensa proxy</dt><dd>Señal inmediata de seguridad, disponibilidad e impacto operativo.</dd></div>
-    <div><dt>Retorno descontado</dt><dd>Suma de recompensas donde gamma reduce el peso de las futuras.</dd></div>
-    <div><dt>Valor Q</dt><dd>Estimación del retorno de elegir una acción en un estado y continuar.</dd></div>
-    <div><dt>Política greedy</dt><dd>Regla que elige una acción con el mayor valor Q estimado.</dd></div>
-    <div><dt>Terminación</dt><dd>Final natural definido por la tarea; este entorno no contiene estados terminales.</dd></div>
-    <div><dt>Truncamiento</dt><dd>Corte por un límite externo; aquí ocurre después del quinto paso y conserva el valor futuro.</dd></div>
-  </dl>
+  <p>El modelo educativo combina estos conceptos; úsalos como glosario visual durante el recorrido.</p>
+  <ul class="concept-visual-grid" aria-label="Conceptos fundamentales de aprendizaje por refuerzo">
+    <li class="concept-visual-card">
+      <img src="assets/learning-visuals/icons/agent-robot.webp" alt="" width="500" height="500" loading="lazy" decoding="async">
+      <strong>Agente</strong>
+      <span>Sistema que selecciona una acción.</span>
+    </li>
+    <li class="concept-visual-card">
+      <img src="assets/learning-visuals/icons/model-gear.webp" alt="" width="500" height="500" loading="lazy" decoding="async">
+      <strong>Entorno</strong>
+      <span>Reglas que responden a la acción.</span>
+    </li>
+    <li class="concept-visual-card">
+      <img src="assets/learning-visuals/icons/observe-search.webp" alt="" width="500" height="500" loading="lazy" decoding="async">
+      <strong>Estado</strong>
+      <span>Información disponible para decidir.</span>
+    </li>
+    <li class="concept-visual-card">
+      <img src="assets/learning-visuals/icons/security-shield.webp" alt="" width="500" height="500" loading="lazy" decoding="async">
+      <strong>Acción</strong>
+      <span>Decisión ejecutada por el agente.</span>
+    </li>
+    <li class="concept-visual-card">
+      <img src="assets/learning-visuals/icons/reward-target.webp" alt="" width="500" height="500" loading="lazy" decoding="async">
+      <strong>Recompensa</strong>
+      <span>Señal inmediata entregada por el entorno.</span>
+    </li>
+    <li class="concept-visual-card">
+      <img src="assets/learning-visuals/icons/learning-brain.webp" alt="" width="500" height="500" loading="lazy" decoding="async">
+      <strong>Valor Q</strong>
+      <span>Retorno futuro estimado para una acción.</span>
+    </li>
+    <li class="concept-visual-card">
+      <img src="assets/learning-visuals/icons/traffic-light.webp" alt="" width="500" height="500" loading="lazy" decoding="async">
+      <strong>Política</strong>
+      <span>Regla que relaciona estados con decisiones.</span>
+    </li>
+    <li class="concept-visual-card">
+      <img src="assets/learning-visuals/icons/package.webp" alt="" width="500" height="500" loading="lazy" decoding="async">
+      <strong>Transición</strong>
+      <span>Estado, acción, recompensa y estado siguiente.</span>
+    </li>
+  </ul>
+  <aside class="callout" aria-label="Recompensa, retorno y límites">
+    <h3>Dos límites importantes</h3>
+    <p>
+      La recompensa inmediata no es lo mismo que el valor Q: Q estima retorno futuro. Terminación sería un
+      final natural; truncamiento es un corte externo que aquí ocurre después del quinto paso.
+    </p>
+  </aside>
   <figure class="learning-video">
     <video controls preload="metadata" width="1280" height="720" aria-describedby="conceptos-video-caption conceptos-video-description">
       <source src="video/conceptos.mp4" type="video/mp4">

@@ -1,0 +1,126 @@
+{
+  "generated_at": "2026-07-10",
+  "selection_policy": "Only CC0 or CC BY-SA 4.0 resources with identifiable authors and source pages.",
+  "files": [
+    {
+      "local_file": "diagrams/reinforcement-learning-cycle.webp",
+      "derived_file": "diagrams/reinforcement-learning-cycle-white.webp",
+      "title": "Reinforcement learning diagram",
+      "author": "Megajuice",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Reinforcement_learning_diagram.svg",
+      "license": "CC0 1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "recommended_section": "que-es-rl / ciclo",
+      "notes": "The white derivative only adds a background; semantic content is unchanged."
+    },
+    {
+      "local_file": "diagrams/agent-environment-loop.webp",
+      "derived_file": "diagrams/agent-environment-loop-white.webp",
+      "title": "Agent-environment diagram RL",
+      "author": "Martin Thoma",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Agent-environment-diagram-rl.svg",
+      "license": "CC0 1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "recommended_section": "optional reference only",
+      "notes": "The source contains German labels; do not use as the primary Spanish diagram."
+    },
+    {
+      "local_file": "diagrams/q-table-before-after.png",
+      "title": "Q-Learning Matrix Initialized and After Training",
+      "author": "LearnDataSci",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Q-Learning_Matrix_Initialized_and_After_Training.png",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "recommended_section": "q-learning",
+      "notes": "Keep attribution in the visible caption or in a nearby attribution link."
+    },
+    {
+      "local_file": "icons/agent-robot.webp",
+      "title": "Robot Face",
+      "author": "OpenMoji contributors",
+      "source_page": "https://commons.wikimedia.org/wiki/File:OpenMoji-color_1F916.svg",
+      "project_page": "https://openmoji.org/",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "recommended_section": "conceptos / robot-repartidor",
+      "notes": "Downloaded from Wikimedia Commons as a rendered preview of the OpenMoji SVG."
+    },
+    {
+      "local_file": "icons/package.webp",
+      "title": "Package",
+      "author": "OpenMoji contributors",
+      "source_page": "https://commons.wikimedia.org/wiki/File:OpenMoji-color_1F4E6.svg",
+      "project_page": "https://openmoji.org/",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "recommended_section": "robot-repartidor",
+      "notes": "Downloaded from Wikimedia Commons as a rendered preview of the OpenMoji SVG."
+    },
+    {
+      "local_file": "icons/security-shield.webp",
+      "title": "Shield",
+      "author": "OpenMoji contributors",
+      "source_page": "https://commons.wikimedia.org/wiki/File:OpenMoji-color_1F6E1.svg",
+      "project_page": "https://openmoji.org/",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "recommended_section": "proposito / caso-practico / simulador",
+      "notes": "Downloaded from Wikimedia Commons as a rendered preview of the OpenMoji SVG."
+    },
+    {
+      "local_file": "icons/learning-brain.webp",
+      "title": "Brain",
+      "author": "OpenMoji contributors",
+      "source_page": "https://commons.wikimedia.org/wiki/File:OpenMoji-color_1F9E0.svg",
+      "project_page": "https://openmoji.org/",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "recommended_section": "que-es-rl / q-learning",
+      "notes": "Downloaded from Wikimedia Commons as a rendered preview of the OpenMoji SVG."
+    },
+    {
+      "local_file": "icons/traffic-light.webp",
+      "title": "Vertical Traffic Light",
+      "author": "OpenMoji contributors",
+      "source_page": "https://commons.wikimedia.org/wiki/File:OpenMoji-color_1F6A6.svg",
+      "project_page": "https://openmoji.org/",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "recommended_section": "caso-practico / tráfico",
+      "notes": "Downloaded from Wikimedia Commons as a rendered preview of the OpenMoji SVG."
+    },
+    {
+      "local_file": "icons/observe-search.webp",
+      "title": "Magnifying Glass Tilted Left",
+      "author": "OpenMoji contributors",
+      "source_page": "https://commons.wikimedia.org/wiki/File:OpenMoji-color_1F50D.svg",
+      "project_page": "https://openmoji.org/",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "recommended_section": "comparacion / conceptos",
+      "notes": "Downloaded from Wikimedia Commons as a rendered preview of the OpenMoji SVG."
+    },
+    {
+      "local_file": "icons/reward-target.webp",
+      "title": "Direct Hit",
+      "author": "OpenMoji contributors",
+      "source_page": "https://commons.wikimedia.org/wiki/File:OpenMoji-color_1F3AF.svg",
+      "project_page": "https://openmoji.org/",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "recommended_section": "proposito / recompensa / objetivos",
+      "notes": "Downloaded from Wikimedia Commons as a rendered preview of the OpenMoji SVG."
+    },
+    {
+      "local_file": "icons/model-gear.webp",
+      "title": "Gear",
+      "author": "OpenMoji contributors",
+      "source_page": "https://commons.wikimedia.org/wiki/File:OpenMoji-color_2699.svg",
+      "project_page": "https://openmoji.org/",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "recommended_section": "conceptos / modelado",
+      "notes": "Downloaded from Wikimedia Commons as a rendered preview of the OpenMoji SVG."
+    }
+  ]
+}

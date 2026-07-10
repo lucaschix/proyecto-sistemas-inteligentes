@@ -20,6 +20,10 @@
     resolver la tarea manualmente. Después, un agente Q-learning entrena sobre el mismo mapa y compara
     su política con tu recorrido.
   </p>
+  <div class="visual-text-condensed">
+    <img class="inline-visual-icon" src="assets/learning-visuals/icons/agent-robot.webp" alt="" width="500" height="500" loading="lazy" decoding="async">
+    <p><strong>Misión:</strong> recoge el paquete, evita obstáculos y completa la entrega con la menor cantidad de pasos.</p>
+  </div>
 
   <ul class="delivery-concept-grid" aria-label="Elementos del entorno de aprendizaje por refuerzo">
     <li><strong>Estado</strong><span>Posición del robot y si transporta el paquete.</span></li>
@@ -30,6 +34,10 @@
 
   <section class="reward-guide" aria-labelledby="reward-guide-title">
     <h3 id="reward-guide-title">Reglas de recompensa</h3>
+    <div class="visual-text-condensed">
+      <img class="inline-visual-icon" src="assets/learning-visuals/icons/reward-target.webp" alt="" width="500" height="500" loading="lazy" decoding="async">
+      <p><strong>Señal de aprendizaje:</strong> cada costo o premio empuja al agente hacia rutas más cortas, seguras y completas.</p>
+    </div>
     <dl>
       <div><dt>Movimiento</dt><dd>−1</dd></div>
       <div><dt>Colisión</dt><dd>−5</dd></div>

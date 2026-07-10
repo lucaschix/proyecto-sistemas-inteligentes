@@ -12,11 +12,29 @@
     del <strong>entorno</strong> una recompensa y una nueva situación. Su objetivo es aprender una
     <strong>política</strong> que maximice el retorno esperado, no acertar una etiqueta aislada.
   </p>
-  <p>
-    La <strong>recompensa proxy</strong> evalúa un paso. El <strong>retorno descontado</strong> combina
-    recompensas presentes y futuras, dando a las futuras un peso definido por gamma. Por eso una acción con
-    recompensa inmediata alta no siempre tiene el mayor valor a largo plazo.
-  </p>
+  <figure class="learning-visual learning-visual--diagram">
+    <img
+      src="assets/learning-visuals/diagrams/reinforcement-learning-cycle-white.webp"
+      alt="Diagrama del ciclo de aprendizaje por refuerzo: el agente observa el estado del entorno, ejecuta una acción y recibe una recompensa y un nuevo estado."
+      width="960"
+      height="928"
+      decoding="async"
+    >
+    <figcaption>
+      El aprendizaje ocurre al repetir el ciclo estado, acción, recompensa y siguiente estado.
+      <span class="learning-visual-credit">
+        Diagrama de Megajuice, <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>.
+      </span>
+    </figcaption>
+  </figure>
+  <details class="image-details">
+    <summary>Leer explicación paso a paso</summary>
+    <p>
+      La <strong>recompensa proxy</strong> evalúa un paso. El <strong>retorno descontado</strong> combina
+      recompensas presentes y futuras, dando a las futuras un peso definido por gamma. Por eso una acción con
+      recompensa inmediata alta no siempre tiene el mayor valor a largo plazo.
+    </p>
+  </details>
   <figure class="learning-video">
     <video controls preload="metadata" width="1280" height="720" aria-describedby="que-es-rl-video-caption que-es-rl-video-description">
       <source src="video/que-es-rl.mp4" type="video/mp4">

@@ -43,31 +43,6 @@
     </p>
   </aside>
 
-  <figure class="learning-video">
-    <video controls preload="metadata" width="1280" height="720" aria-describedby="q-learning-video-caption q-learning-video-description">
-      <source src="video/q-learning.mp4" type="video/mp4">
-      Tu navegador no puede reproducir este video.
-    </video>
-    <figcaption id="q-learning-video-caption">
-      Animación de la actualización Q: una transición concreta entrena la celda Q(alto, bloquear) y cambia su estimación.
-    </figcaption>
-    <ol class="visual-key" aria-label="Secuencia de actualización de la tabla Q">
-      <li><strong>1. Transición</strong><span>alto, bloquear, +8, medio</span></li>
-      <li><strong>2. Objetivo TD</strong><span>8 + 0,8 × 6</span></li>
-      <li><strong>3. Celda Q</strong><span>Q(alto, bloquear)</span></li>
-      <li><strong>4. Nuevo valor</strong><span>4,00 → 8,40</span></li>
-    </ol>
-    <details class="video-transcript" id="q-learning-video-description">
-      <summary>Descripción de la animación</summary>
-      <p>
-        La transición “Riesgo alto, Bloquear, recompensa +8, Riesgo medio” produce un objetivo TD de 12,8.
-        Con alpha 0,5, la celda <code>Q(alto, bloquear)</code> se mueve desde 4,00 hasta 8,40. La animación
-        marca esa celda en una tabla Q simplificada para mostrar que se actualiza la combinación estado-acción
-        entrenada en ese paso.
-      </p>
-    </details>
-  </figure>
-
   <div class="learning-tool q-lab" id="q-lab">
     <div class="tool-heading">
       <div>
@@ -186,6 +161,49 @@
       <ol id="q-history"></ol>
     </details>
   </div>
+  <details class="image-details">
+    <summary>Ver un ejemplo visual de tabla Q antes y después del entrenamiento</summary>
+    <figure class="learning-visual learning-visual--diagram">
+      <img
+        src="assets/learning-visuals/diagrams/q-table-before-after.png"
+        alt="Dos matrices comparan una tabla Q inicial, con valores en cero, y una tabla Q después del entrenamiento, con valores distintos para cada transición."
+        width="1000"
+        height="1016"
+        loading="lazy"
+        decoding="async"
+      >
+      <figcaption>
+        Ejemplo externo para reconocer cómo una tabla Q deja de estar vacía después del entrenamiento. La tabla interactiva del sitio sigue siendo la fuente principal.
+        <span class="learning-visual-credit">
+          LearnDataSci, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
+        </span>
+      </figcaption>
+    </figure>
+  </details>
+  <figure class="learning-video">
+    <video controls preload="metadata" width="1280" height="720" aria-describedby="q-learning-video-caption q-learning-video-description">
+      <source src="video/q-learning.mp4" type="video/mp4">
+      Tu navegador no puede reproducir este video.
+    </video>
+    <figcaption id="q-learning-video-caption">
+      Animación de la actualización Q: una transición concreta entrena la celda Q(alto, bloquear) y cambia su estimación.
+    </figcaption>
+    <ol class="visual-key" aria-label="Secuencia de actualización de la tabla Q">
+      <li><strong>1. Transición</strong><span>alto, bloquear, +8, medio</span></li>
+      <li><strong>2. Objetivo TD</strong><span>8 + 0,8 × 6</span></li>
+      <li><strong>3. Celda Q</strong><span>Q(alto, bloquear)</span></li>
+      <li><strong>4. Nuevo valor</strong><span>4,00 → 8,40</span></li>
+    </ol>
+    <details class="video-transcript" id="q-learning-video-description">
+      <summary>Descripción de la animación</summary>
+      <p>
+        La transición “Riesgo alto, Bloquear, recompensa +8, Riesgo medio” produce un objetivo TD de 12,8.
+        Con alpha 0,5, la celda <code>Q(alto, bloquear)</code> se mueve desde 4,00 hasta 8,40. La animación
+        marca esa celda en una tabla Q simplificada para mostrar que se actualiza la combinación estado-acción
+        entrenada en ese paso.
+      </p>
+    </details>
+  </figure>
   <h3>Ejemplo aplicado</h3>
   <p>
     Entrenar “riesgo alto → bloquear” actualiza solo esa celda en ese paso. Otras celdas pueden cambiar al

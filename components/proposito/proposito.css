@@ -1,4 +1,8 @@
 .slide-proposito .purpose-balance {
-  padding-left: var(--space-4);
-  border-left: 0.25rem solid var(--color-action);
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 0.35rem solid var(--dashboard-lime);
+  border-radius: var(--radius-md);
+  box-shadow: 0 0.35rem 1rem rgb(5 6 7 / 0.06);
 }

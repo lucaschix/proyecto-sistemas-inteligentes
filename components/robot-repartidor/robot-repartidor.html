@@ -1,0 +1,315 @@
+<article class="content-section slide-robot-repartidor">
+  <h2>Laboratorio: robot repartidor</h2>
+
+  <section class="learning-intro" aria-labelledby="delivery-meta">
+    <h3 id="delivery-meta">Punto de partida</h3>
+    <dl>
+      <div>
+        <dt>Objetivo de aprendizaje</dt>
+        <dd>Experimentar con exploración, recompensas demoradas y una política aprendida mediante Q-learning.</dd>
+      </div>
+      <div>
+        <dt>Conocimiento previo</dt>
+        <dd>Reconocer estado, acción, recompensa, episodio y valor Q.</dd>
+      </div>
+    </dl>
+  </section>
+
+  <p>
+    Un robot debe recoger un paquete y entregarlo en el destino evitando obstáculos. Primero puedes
+    resolver la tarea manualmente. Después, un agente Q-learning entrena sobre el mismo mapa y compara
+    su política con tu recorrido.
+  </p>
+
+  <ul class="delivery-concept-grid" aria-label="Elementos del entorno de aprendizaje por refuerzo">
+    <li><strong>Estado</strong><span>Posición del robot y si transporta el paquete.</span></li>
+    <li><strong>Acciones</strong><span>Arriba, derecha, abajo e izquierda.</span></li>
+    <li><strong>Recompensa</strong><span>Premios por recoger y entregar; costos por moverse o chocar.</span></li>
+    <li><strong>Objetivo</strong><span>Entregar el paquete con pocos pasos y sin colisiones.</span></li>
+  </ul>
+
+  <section class="reward-guide" aria-labelledby="reward-guide-title">
+    <h3 id="reward-guide-title">Reglas de recompensa</h3>
+    <dl>
+      <div><dt>Movimiento</dt><dd>−1</dd></div>
+      <div><dt>Colisión</dt><dd>−5</dd></div>
+      <div><dt>Recoger paquete</dt><dd>+11 neto</dd></div>
+      <div><dt>Completar entrega</dt><dd>+34 neto</dd></div>
+    </dl>
+    <p>
+      El pequeño costo de cada movimiento ayuda a distinguir una ruta corta de otra que también llega,
+      pero utiliza pasos innecesarios.
+    </p>
+  </section>
+
+  <div class="learning-tool delivery-lab" id="delivery-lab">
+    <div class="tool-heading delivery-tool-heading">
+      <div>
+        <p class="eyebrow">Experiencia interactiva</p>
+        <h3>Del control humano a una política aprendida</h3>
+      </div>
+      <button class="button button-secondary" id="delivery-reset-all" type="button">
+        Reiniciar laboratorio
+      </button>
+    </div>
+
+    <ol class="delivery-stage-list" aria-label="Etapas del laboratorio">
+      <li class="is-active" data-delivery-stage="manual">
+        <span>1</span>
+        <strong>Juega tú</strong>
+        <small>Encuentra una ruta.</small>
+      </li>
+      <li data-delivery-stage="training">
+        <span>2</span>
+        <strong>Entrena</strong>
+        <small>Ajusta Q-learning.</small>
+      </li>
+      <li data-delivery-stage="comparison">
+        <span>3</span>
+        <strong>Compara</strong>
+        <small>Observa la política.</small>
+      </li>
+    </ol>
+
+    <div class="delivery-dashboard" aria-label="Estado actual del episodio">
+      <div><span>Modo</span><strong id="delivery-mode">Control manual</strong></div>
+      <div><span>Paso</span><strong><output id="delivery-step">0</output> / 40</strong></div>
+      <div><span>Recompensa</span><strong><output id="delivery-reward">0</output></strong></div>
+      <div><span>Colisiones</span><strong><output id="delivery-collisions">0</output></strong></div>
+    </div>
+
+    <div class="delivery-workspace">
+      <section class="delivery-board-panel" aria-labelledby="delivery-board-title">
+        <div class="delivery-panel-heading">
+          <div>
+            <p class="eyebrow">Entorno</p>
+            <h4 id="delivery-board-title">Mapa de reparto</h4>
+          </div>
+          <p class="delivery-status-badge" id="delivery-status-badge" data-status="searching">
+            Busca el paquete
+          </p>
+        </div>
+
+        <div
+          class="delivery-board"
+          id="delivery-board"
+          role="grid"
+          aria-label="Mapa de seis filas y seis columnas del robot repartidor"
+        ></div>
+
+        <ul class="delivery-legend" aria-label="Leyenda del mapa">
+          <li><span class="legend-symbol legend-robot" aria-hidden="true"></span>Robot</li>
+          <li><span class="legend-symbol legend-package" aria-hidden="true"></span>Paquete</li>
+          <li><span class="legend-symbol legend-destination" aria-hidden="true"></span>Destino</li>
+          <li><span class="legend-symbol legend-obstacle" aria-hidden="true"></span>Obstáculo</li>
+        </ul>
+
+        <fieldset class="delivery-controls">
+          <legend>Mueve el robot</legend>
+          <div class="delivery-direction-pad">
+            <button class="action-button direction-up" type="button" data-delivery-action="up" aria-label="Mover arriba">↑</button>
+            <button class="action-button direction-left" type="button" data-delivery-action="left" aria-label="Mover a la izquierda">←</button>
+            <button class="action-button direction-down" type="button" data-delivery-action="down" aria-label="Mover abajo">↓</button>
+            <button class="action-button direction-right" type="button" data-delivery-action="right" aria-label="Mover a la derecha">→</button>
+          </div>
+          <p class="delivery-keyboard-note">También puedes usar las flechas del teclado o las teclas W, A, S y D.</p>
+        </fieldset>
+
+        <div class="delivery-board-actions">
+          <button class="button button-secondary" id="delivery-manual-mode" type="button">
+            Nuevo intento manual
+          </button>
+          <button class="button" id="delivery-agent-demo" type="button" disabled>
+            Ver agente aprendido
+          </button>
+        </div>
+      </section>
+
+      <aside class="delivery-observation-panel" aria-labelledby="delivery-observation-title">
+        <p class="eyebrow">Lo que observa el agente</p>
+        <h4 id="delivery-observation-title">Estado actual</h4>
+
+        <dl class="delivery-observation">
+          <div>
+            <dt>Posición</dt>
+            <dd id="delivery-position">Fila 6, columna 1</dd>
+          </div>
+          <div>
+            <dt>Paquete</dt>
+            <dd id="delivery-package-state">Pendiente de recoger</dd>
+          </div>
+          <div>
+            <dt>Último resultado</dt>
+            <dd id="delivery-last-event">El episodio aún no comienza.</dd>
+          </div>
+        </dl>
+
+        <section class="delivery-q-panel" aria-labelledby="delivery-q-title">
+          <div class="delivery-q-heading">
+            <h4 id="delivery-q-title">Valores Q del estado</h4>
+            <span id="delivery-q-state">Sin entrenamiento</span>
+          </div>
+
+          <div class="delivery-q-bars" id="delivery-q-bars">
+            <div data-q-action="up">
+              <span>Arriba</span>
+              <span class="q-bar-track"><span class="q-bar-fill"></span></span>
+              <output>0,00</output>
+            </div>
+            <div data-q-action="right">
+              <span>Derecha</span>
+              <span class="q-bar-track"><span class="q-bar-fill"></span></span>
+              <output>0,00</output>
+            </div>
+            <div data-q-action="down">
+              <span>Abajo</span>
+              <span class="q-bar-track"><span class="q-bar-fill"></span></span>
+              <output>0,00</output>
+            </div>
+            <div data-q-action="left">
+              <span>Izquierda</span>
+              <span class="q-bar-track"><span class="q-bar-fill"></span></span>
+              <output>0,00</output>
+            </div>
+          </div>
+
+          <p class="status-note" id="delivery-policy-note">
+            Entrena al agente para observar qué acción obtiene el mayor valor Q.
+          </p>
+        </section>
+
+        <section class="delivery-event-log" aria-labelledby="delivery-log-title">
+          <h4 id="delivery-log-title">Últimas transiciones</h4>
+          <ol id="delivery-log" aria-live="polite">
+            <li>El historial aparecerá después del primer movimiento.</li>
+          </ol>
+        </section>
+      </aside>
+    </div>
+
+    <section class="delivery-training-panel" aria-labelledby="delivery-training-title">
+      <div class="delivery-training-copy">
+        <p class="eyebrow">Etapa 2</p>
+        <h3 id="delivery-training-title">Entrena al agente Q-learning</h3>
+        <p>
+          Durante el entrenamiento, el agente explora rutas y actualiza los valores Q. El límite de
+          40 pasos trunca el episodio, pero no se trata como una terminación natural.
+        </p>
+      </div>
+
+      <div class="delivery-parameter-grid">
+        <label class="delivery-range-control" for="delivery-alpha">
+          <span><strong>Alpha (α)</strong> · velocidad de aprendizaje</span>
+          <span class="delivery-range-row">
+            <input id="delivery-alpha" type="range" min="0.1" max="1" step="0.1" value="0.5">
+            <output id="delivery-alpha-value" for="delivery-alpha">0,5</output>
+          </span>
+        </label>
+
+        <label class="delivery-range-control" for="delivery-gamma">
+          <span><strong>Gamma (γ)</strong> · importancia del futuro</span>
+          <span class="delivery-range-row">
+            <input id="delivery-gamma" type="range" min="0" max="0.99" step="0.01" value="0.9">
+            <output id="delivery-gamma-value" for="delivery-gamma">0,90</output>
+          </span>
+        </label>
+
+        <label class="delivery-range-control" for="delivery-epsilon">
+          <span><strong>Epsilon (ε)</strong> · probabilidad de explorar</span>
+          <span class="delivery-range-row">
+            <input id="delivery-epsilon" type="range" min="0" max="1" step="0.05" value="0.2">
+            <output id="delivery-epsilon-value" for="delivery-epsilon">0,20</output>
+          </span>
+        </label>
+
+        <label class="delivery-range-control" for="delivery-episodes">
+          <span><strong>Episodios</strong> · experiencias de entrenamiento</span>
+          <span class="delivery-range-row">
+            <input id="delivery-episodes" type="range" min="100" max="1000" step="100" value="500">
+            <output id="delivery-episodes-value" for="delivery-episodes">500</output>
+          </span>
+        </label>
+      </div>
+
+      <div class="delivery-training-actions">
+        <button class="button" id="delivery-train" type="button">Entrenar 500 episodios</button>
+        <button class="button button-secondary" id="delivery-clear-learning" type="button">
+          Borrar aprendizaje
+        </button>
+      </div>
+
+      <div class="delivery-training-progress">
+        <progress id="delivery-training-progress" value="0" max="500"></progress>
+        <p class="status-note" id="delivery-training-status" role="status" aria-live="polite">
+          El agente todavía no ha sido entrenado.
+        </p>
+      </div>
+
+      <dl class="delivery-training-metrics" aria-label="Métricas del entrenamiento">
+        <div><dt>Episodios acumulados</dt><dd><output id="delivery-trained-episodes">0</output></dd></div>
+        <div><dt>Entregas exitosas</dt><dd><output id="delivery-training-success">0 %</output></dd></div>
+        <div><dt>Estados visitados</dt><dd><output id="delivery-visited-states">0</output></dd></div>
+        <div><dt>Ruta greedy</dt><dd><output id="delivery-greedy-steps">—</output></dd></div>
+      </dl>
+    </section>
+
+    <section class="delivery-comparison-panel" aria-labelledby="delivery-comparison-title">
+      <div class="delivery-comparison-heading">
+        <div>
+          <p class="eyebrow">Etapa 3</p>
+          <h3 id="delivery-comparison-title">Compara las políticas</h3>
+        </div>
+        <p>La ruta óptima de este mapa requiere 14 movimientos.</p>
+      </div>
+
+      <div class="table-wrap" tabindex="0">
+        <table>
+          <caption>Resultados del intento humano y de la política greedy aprendida</caption>
+          <thead>
+            <tr>
+              <th scope="col">Política</th>
+              <th scope="col">Entrega</th>
+              <th scope="col">Pasos</th>
+              <th scope="col">Colisiones</th>
+              <th scope="col">Recompensa</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Tu recorrido</th>
+              <td id="delivery-human-success">Sin intento</td>
+              <td id="delivery-human-steps">—</td>
+              <td id="delivery-human-collisions">—</td>
+              <td id="delivery-human-reward">—</td>
+            </tr>
+            <tr>
+              <th scope="row">Agente Q-learning</th>
+              <td id="delivery-agent-success">Sin entrenar</td>
+              <td id="delivery-agent-steps">—</td>
+              <td id="delivery-agent-collisions">—</td>
+              <td id="delivery-agent-reward">—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="delivery-comparison-insight" id="delivery-comparison-insight">
+        Completa un intento manual y entrena al agente para habilitar la comparación.
+      </p>
+    </section>
+  </div>
+
+  <section class="callout">
+    <h3>Qué demuestra este laboratorio</h3>
+    <p>
+      La recompensa por entregar aparece al final de la ruta. Gracias a gamma, las acciones anteriores
+      pueden adquirir valor porque conducen a esa recompensa futura. Epsilon permite descubrir caminos
+      que una política puramente greedy podría no intentar.
+    </p>
+  </section>
+
+  <p class="understanding-criterion">
+    <strong>Lo comprendiste si…</strong> puedes explicar por qué penalizar cada movimiento favorece rutas
+    cortas y por qué el agente necesita explorar antes de explotar la mejor política conocida.
+  </p>
+</article>

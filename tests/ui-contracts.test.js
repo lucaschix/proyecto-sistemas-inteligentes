@@ -50,6 +50,26 @@ test("la navegación móvil usa un disclosure con estado y relación programáti
   assert.match(markup, /aria-controls="site-nav"/);
 });
 
+test("la estructura principal ofrece resumen, salto accesible y progreso visual", async () => {
+  const [markup, script, styles] = await Promise.all([
+    read("index.html"),
+    read("proyect.js"),
+    read("style.css")
+  ]);
+
+  assert.match(markup, /<a class="skip-link" href="#slide-host">Saltar al contenido principal<\/a>/);
+  assert.match(markup, /class="page-shell learning-overview" aria-label="Resumen del recorrido"/);
+  assert.match(markup, /<strong>10 secciones<\/strong>/);
+  assert.match(markup, /<strong>4 videos Manim<\/strong>/);
+  assert.match(script, /slide-progress-track/);
+  assert.match(script, /--slide-progress/);
+  assert.match(styles, /\.learning-overview\s*{[\s\S]*grid-template-columns: repeat\(4, minmax\(0, 1fr\)\)/);
+  assert.match(styles, /\.section-link::before[\s\S]*counter\(section-nav, decimal-leading-zero\)/);
+  assert.match(styles, /\.slide-progress-track\s*{/);
+  assert.match(styles, /@media \(max-width: 720px\)[\s\S]*\.learning-overview\s*{\s*grid-template-columns: repeat\(2, minmax\(0, 1fr\)\)/);
+  assert.match(styles, /@media \(max-width: 560px\)[\s\S]*\.overview-item span\s*{\s*display: none;/);
+});
+
 test("los componentes interactivos usan los tokens semánticos vigentes", async () => {
   const styles = await Promise.all([
     read("components/ciclo/ciclo.css"),
@@ -59,6 +79,33 @@ test("los componentes interactivos usan los tokens semánticos vigentes", async 
     read("components/simulador/simulador.css")
   ]);
   assert.doesNotMatch(styles.join("\n"), /--color-accent(?:-strong)?/);
+});
+
+test("la interfaz usa la paleta visual solicitada", async () => {
+  const [styles, trafficPage] = await Promise.all([
+    read("style.css"),
+    read("traffic_rl_manim/index.html")
+  ]);
+
+  for (const color of ["#6C5CE7", "#3D8BFF", "#2ECC71", "#FFC107", "#FF6B6B", "#EDE7FF", "#F5F6FA", "#1E293B", "#FFFFFF"]) {
+    assert.match(styles, new RegExp(color, "i"));
+  }
+
+  assert.match(trafficPage, /--background: #F5F6FA/);
+  assert.match(trafficPage, /--action: #6C5CE7/);
+});
+
+test("la interfaz adopta el lenguaje visual del dashboard educativo de referencia", async () => {
+  const styles = await read("style.css");
+
+  for (const color of ["#050607", "#C8CED1", "#3717F8", "#B1FE29"]) {
+    assert.match(styles, new RegExp(color, "i"));
+  }
+
+  assert.match(styles, /\.site-header\s*{[\s\S]*background: var\(--dashboard-black\)/);
+  assert.match(styles, /\.side-menu\s*{[\s\S]*position: sticky;[\s\S]*background: var\(--dashboard-black\)/);
+  assert.match(styles, /\.overview-item:first-child\s*{[\s\S]*background: var\(--dashboard-violet\)/);
+  assert.match(styles, /\.overview-item:last-child\s*{[\s\S]*background: var\(--dashboard-lime\)/);
 });
 
 test("simulador y tabla Q conservan un retorno contextual mediante el store de UI", async () => {

@@ -9,7 +9,8 @@ const slides = [
   "modelado",
   "ciclo",
   "q-learning",
-  "simulador"
+  "simulador",
+  "robot-repartidor"
 ];
 
 const slideLabels = {
@@ -21,7 +22,8 @@ const slideLabels = {
   modelado: "Modelado del entorno",
   ciclo: "Ciclo de interacción",
   "q-learning": "Q-learning y tabla Q",
-  simulador: "Simulador de decisiones"
+  simulador: "Simulador de decisiones",
+  "robot-repartidor": "Laboratorio: robot repartidor"
 };
 
 const links = Array.from(document.querySelectorAll(".section-link"));
@@ -237,9 +239,14 @@ function addSlideProgress(container, slide) {
   const currentIndex = slides.indexOf(slide);
   const heading = container.querySelector("h2");
   if (!heading) return;
+  const progressValue = Math.round(((currentIndex + 1) / slides.length) * 100);
   const progress = document.createElement("p");
   progress.className = "slide-progress";
-  progress.textContent = `Sección ${currentIndex + 1} de ${slides.length}`;
+  progress.style.setProperty("--slide-progress", `${progressValue}%`);
+  progress.innerHTML = `
+    <span class="slide-progress-text">Sección ${currentIndex + 1} de ${slides.length}</span>
+    <span class="slide-progress-track" aria-hidden="true"><span></span></span>
+  `;
   heading.insertAdjacentElement("afterend", progress);
 }
 

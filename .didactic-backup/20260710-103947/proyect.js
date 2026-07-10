@@ -312,13 +312,6 @@ async function loadSlide(requestedSlide, options = {}) {
     activeCleanup?.();
     host.replaceChildren(...staging.childNodes);
     const nextCleanup = await component.mount?.(host, componentContext);
-    // DIDACTIC_ENHANCEMENTS_EVENT_START
-    window.dispatchEvent(
-      new CustomEvent("rl:component-mounted", {
-        detail: { slide, host, componentContext },
-      }),
-    );
-    // DIDACTIC_ENHANCEMENTS_EVENT_END
     if (sequence !== loadSequence) {
       if (typeof nextCleanup === "function") nextCleanup();
       return;

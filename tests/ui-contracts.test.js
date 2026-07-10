@@ -5,7 +5,7 @@ import test from "node:test";
 const read = (path) => readFile(new URL(`../${path}`, import.meta.url), "utf8");
 
 test("la tabla Q expone una región desplazable con nombre accesible", async () => {
-  const markup = await read("components/q-learning/q-learning.html");
+  const markup = await read("src/components/q-learning/q-learning.html");
   assert.match(markup, /class="table-wrap"[\s\S]*role="region"/);
   assert.match(markup, /aria-label="Tabla Q interactiva/);
   assert.match(markup, /tabindex="0"/);
@@ -17,8 +17,8 @@ test("la tabla Q expone una región desplazable con nombre accesible", async () 
 
 test("la tabla Q conecta una transición concreta con la celda actualizada", async () => {
   const [markup, styles] = await Promise.all([
-    read("components/q-learning/q-learning.html"),
-    read("style.css")
+    read("src/components/q-learning/q-learning.html"),
+    read("src/styles/main.css")
   ]);
 
   assert.match(markup, /class="q-transition-bridge" aria-labelledby="q-transition-title"/);
@@ -37,7 +37,7 @@ test("la tabla Q conecta una transición concreta con la celda actualizada", asy
 });
 
 test("la tabla comparativa expone desplazamiento accesible por teclado", async () => {
-  const markup = await read("components/comparacion/comparacion.html");
+  const markup = await read("src/components/comparacion/comparacion.html");
   assert.match(markup, /class="table-wrap"[\s\S]*role="region"/);
   assert.match(markup, /aria-label="Comparación desplazable/);
   assert.match(markup, /tabindex="0"/);
@@ -53,8 +53,8 @@ test("la navegación móvil usa un disclosure con estado y relación programáti
 test("la estructura principal ofrece resumen, salto accesible y progreso visual", async () => {
   const [markup, script, styles] = await Promise.all([
     read("index.html"),
-    read("proyect.js"),
-    read("style.css")
+    read("src/app.js"),
+    read("src/styles/main.css")
   ]);
 
   assert.match(markup, /<a class="skip-link" href="#slide-host">Saltar al contenido principal<\/a>/);
@@ -72,18 +72,18 @@ test("la estructura principal ofrece resumen, salto accesible y progreso visual"
 
 test("los componentes interactivos usan los tokens semánticos vigentes", async () => {
   const styles = await Promise.all([
-    read("components/ciclo/ciclo.css"),
-    read("components/modelado/modelado.css"),
-    read("components/proposito/proposito.css"),
-    read("components/q-learning/q-learning.css"),
-    read("components/simulador/simulador.css")
+    read("src/components/ciclo/ciclo.css"),
+    read("src/components/modelado/modelado.css"),
+    read("src/components/proposito/proposito.css"),
+    read("src/components/q-learning/q-learning.css"),
+    read("src/components/simulador/simulador.css")
   ]);
   assert.doesNotMatch(styles.join("\n"), /--color-accent(?:-strong)?/);
 });
 
 test("la interfaz usa la paleta visual solicitada", async () => {
   const [styles, trafficPage] = await Promise.all([
-    read("style.css"),
+    read("src/styles/main.css"),
     read("traffic_rl_manim/index.html")
   ]);
 
@@ -96,7 +96,7 @@ test("la interfaz usa la paleta visual solicitada", async () => {
 });
 
 test("la interfaz adopta el lenguaje visual del dashboard educativo de referencia", async () => {
-  const styles = await read("style.css");
+  const styles = await read("src/styles/main.css");
 
   for (const color of ["#050607", "#C8CED1", "#3717F8", "#B1FE29"]) {
     assert.match(styles, new RegExp(color, "i"));
@@ -110,9 +110,9 @@ test("la interfaz adopta el lenguaje visual del dashboard educativo de referenci
 
 test("simulador y tabla Q conservan un retorno contextual mediante el store de UI", async () => {
   const [app, simulator, qLearning] = await Promise.all([
-    read("proyect.js"),
-    read("components/simulador/simulador.js"),
-    read("components/q-learning/q-learning.js")
+    read("src/app.js"),
+    read("src/components/simulador/simulador.js"),
+    read("src/components/q-learning/q-learning.js")
   ]);
   assert.match(app, /getSimulatorState/);
   assert.match(simulator, /persistState/);
@@ -122,8 +122,8 @@ test("simulador y tabla Q conservan un retorno contextual mediante el store de U
 
 test("la tabla Q explica y confirma el restablecimiento del historial compartido", async () => {
   const [markup, script] = await Promise.all([
-    read("components/q-learning/q-learning.html"),
-    read("components/q-learning/q-learning.js")
+    read("src/components/q-learning/q-learning.html"),
+    read("src/components/q-learning/q-learning.js")
   ]);
   assert.match(markup, /Restablecer historial y parámetros/);
   assert.match(markup, /descarta[\s\S]*experiencias añadidas desde la tabla o el simulador/);
@@ -133,8 +133,8 @@ test("la tabla Q explica y confirma el restablecimiento del historial compartido
 
 test("la tabla Q usa fuentes canónicas y feedback de parámetros", async () => {
   const [script, styles] = await Promise.all([
-    read("components/q-learning/q-learning.js"),
-    read("components/q-learning/q-learning.css")
+    read("src/components/q-learning/q-learning.js"),
+    read("src/components/q-learning/q-learning.css")
   ]);
   assert.match(script, /source: "table"/);
   assert.doesNotMatch(script, /source: "manual"/);
@@ -146,32 +146,32 @@ test("la tabla Q usa fuentes canónicas y feedback de parámetros", async () => 
 
 test("las secciones introductorias integran videos Manim responsivos", async () => {
   const [rlMarkup, conceptsMarkup, cicloMarkup, qMarkup, styles, rlManim, conceptsManim, cicloManim, qManim] = await Promise.all([
-    read("components/que-es-rl/que-es-rl.html"),
-    read("components/conceptos/conceptos.html"),
-    read("components/ciclo/ciclo.html"),
-    read("components/q-learning/q-learning.html"),
-    read("style.css"),
-    read("components/que-es-rl/que-es-rl-manim.py"),
-    read("components/conceptos/conceptos-manim.py"),
-    read("components/ciclo/ciclo-manim.py"),
-    read("components/q-learning/q-learning-manim.py")
+    read("src/components/que-es-rl/que-es-rl.html"),
+    read("src/components/conceptos/conceptos.html"),
+    read("src/components/ciclo/ciclo.html"),
+    read("src/components/q-learning/q-learning.html"),
+    read("src/styles/main.css"),
+    read("manim/scenes/que-es-rl.py"),
+    read("manim/scenes/conceptos.py"),
+    read("manim/scenes/ciclo.py"),
+    read("manim/scenes/q-learning.py")
   ]);
 
   assert.match(rlMarkup, /<figure class="learning-video">/);
   assert.match(rlMarkup, /aria-describedby="que-es-rl-video-caption que-es-rl-video-description"/);
-  assert.match(rlMarkup, /src="video\/que-es-rl\.mp4"/);
+  assert.match(rlMarkup, /src="assets\/videos\/que-es-rl\.mp4"/);
   assert.match(rlMarkup, /class="visual-key"[\s\S]*1\. Estado[\s\S]*2\. Acción[\s\S]*3\. Recompensa[\s\S]*4\. Siguiente estado/);
   assert.match(rlMarkup, /id="que-es-rl-video-description"[\s\S]*actualiza su política o\s+valor Q/);
   assert.match(conceptsMarkup, /<figure class="learning-video">/);
   assert.match(conceptsMarkup, /aria-describedby="conceptos-video-caption conceptos-video-description"/);
-  assert.match(conceptsMarkup, /src="video\/conceptos\.mp4"/);
+  assert.match(conceptsMarkup, /src="assets\/videos\/conceptos\.mp4"/);
   assert.match(conceptsMarkup, /class="visual-key"[\s\S]*3\. Recompensa proxy/);
   assert.match(conceptsMarkup, /id="conceptos-video-description"[\s\S]*Q\(alto, bloquear\)/);
-  assert.match(cicloMarkup, /src="video\/ciclo\.mp4"/);
+  assert.match(cicloMarkup, /src="assets\/videos\/ciclo\.mp4"/);
   assert.match(cicloMarkup, /aria-describedby="ciclo-video-caption ciclo-video-description"/);
   assert.match(cicloMarkup, /class="visual-key"[\s\S]*1\. Observa[\s\S]*4\. Actualiza/);
   assert.match(cicloMarkup, /id="ciclo-video-description"[\s\S]*Q\(alto, bloquear\)/);
-  assert.match(qMarkup, /src="video\/q-learning\.mp4"/);
+  assert.match(qMarkup, /src="assets\/videos\/q-learning\.mp4"/);
   assert.match(qMarkup, /aria-describedby="q-learning-video-caption q-learning-video-description"/);
   assert.match(qMarkup, /class="visual-key"[\s\S]*1\. Transición[\s\S]*4\. Nuevo valor/);
   assert.match(qMarkup, /id="q-learning-video-description"[\s\S]*4,00 hasta 8,40/);
@@ -185,10 +185,10 @@ test("las secciones introductorias integran videos Manim responsivos", async () 
 });
 
 test("el video DQN de tráfico es accesible desde un slide principal", async () => {
-  const markup = await read("components/caso-practico/caso-practico.html");
+  const markup = await read("src/components/caso-practico/caso-practico.html");
 
   assert.match(markup, /<figure class="learning-video">/);
-  assert.match(markup, /src="traffic_rl_manim\/media\/videos\/traffic_animation\/480p15\/TrafficLearningScene\.mp4"/);
+  assert.match(markup, /src="assets\/videos\/traffic-learning\.mp4"/);
   assert.match(markup, /aria-describedby="traffic-video-caption traffic-video-description"/);
   assert.match(markup, /id="traffic-video-description"[\s\S]*agente aleatorio[\s\S]*agente DQN entrenado/);
 });

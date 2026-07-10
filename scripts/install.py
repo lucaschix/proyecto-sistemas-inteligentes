@@ -12,12 +12,12 @@ from pathlib import Path
 
 
 HEAD_MARKER = """  <!-- DIDACTIC_ENHANCEMENTS_HEAD_START -->
-  <link rel="stylesheet" href="didactic/didactic-enhancements.css?v=20260710">
+  <link rel="stylesheet" href="src/didactic/didactic-enhancements.css?v=20260710">
   <!-- DIDACTIC_ENHANCEMENTS_HEAD_END -->
 """
 
 BODY_MARKER = """  <!-- DIDACTIC_ENHANCEMENTS_BODY_START -->
-  <script type="module" src="didactic/didactic-enhancements.js?v=20260710"></script>
+  <script type="module" src="src/didactic/didactic-enhancements.js?v=20260710"></script>
   <!-- DIDACTIC_ENHANCEMENTS_BODY_END -->
 """
 
@@ -51,10 +51,10 @@ def parse_args() -> argparse.Namespace:
 def validate_repo(repo: Path) -> None:
     required = [
         repo / "index.html",
-        repo / "proyect.js",
-        repo / "components",
-        repo / "components" / "rl-model.js",
-        repo / "components" / "q-store.js",
+        repo / "src" / "app.js",
+        repo / "src" / "components",
+        repo / "src" / "components" / "rl-model.js",
+        repo / "src" / "components" / "q-store.js",
     ]
     missing = [path for path in required if not path.exists()]
 
@@ -66,21 +66,25 @@ def validate_repo(repo: Path) -> None:
 
 
 def make_backup(repo: Path) -> Path:
-    backup_root = repo / ".didactic-backup"
-    backup_root.mkdir(exist_ok=True)
+    backup_root = repo / "archive" / "backups" / "didactic"
+    backup_root.mkdir(parents=True, exist_ok=True)
     stamp = datetime.now().strftime("%Y%m%d-%H%M%S")
     snapshot = backup_root / stamp
     snapshot.mkdir()
 
-    for filename in ("index.html", "proyect.js"):
-        shutil.copy2(repo / filename, snapshot / filename)
+    shutil.copy2(repo / "index.html", snapshot / "index.html")
+    (snapshot / "src").mkdir()
+    shutil.copy2(repo / "src" / "app.js", snapshot / "src" / "app.js")
 
     return snapshot
 
 
 def copy_assets(package_root: Path, repo: Path, force: bool) -> None:
-    source = package_root / "didactic"
-    destination = repo / "didactic"
+    source = package_root / "src" / "didactic"
+    destination = repo / "src" / "didactic"
+
+    if source.resolve() == destination.resolve():
+        return
 
     if destination.exists() and force:
         shutil.rmtree(destination)
@@ -128,7 +132,7 @@ def patch_project(project_path: Path) -> bool:
 
     if not match:
         raise RuntimeError(
-            "No se encontró la llamada a component.mount en proyect.js. "
+            "No se encontró la llamada a component.mount en src/app.js. "
             "Codex debe revisar manualmente el punto de integración."
         )
 
@@ -153,7 +157,7 @@ def main() -> int:
         backup = make_backup(repo)
         copy_assets(package_root, repo, args.force)
         index_changed = patch_index(repo / "index.html")
-        project_changed = patch_project(repo / "proyect.js")
+        project_changed = patch_project(repo / "src" / "app.js")
     except Exception as error:
         print(f"ERROR: {error}", file=sys.stderr)
         return 1
@@ -162,7 +166,7 @@ def main() -> int:
     print(f"Repositorio: {repo}")
     print(f"Respaldo: {backup}")
     print(f"index.html modificado: {'sí' if index_changed else 'ya estaba integrado'}")
-    print(f"proyect.js modificado: {'sí' if project_changed else 'ya estaba integrado'}")
+    print(f"src/app.js modificado: {'sí' if project_changed else 'ya estaba integrado'}")
     print("Ejecuta: python3 -m http.server 8000")
     return 0
 

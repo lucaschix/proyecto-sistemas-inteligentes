@@ -1,5 +1,5 @@
 /* Visual learning assets
-   Copy this file to assets/learning-visuals/ and import it after style.css. */
+   Keep this file in assets/learning-visuals/ and import it after src/styles/main.css. */
 
 .learning-visual {
   margin-block: var(--space-5, 1.5rem);

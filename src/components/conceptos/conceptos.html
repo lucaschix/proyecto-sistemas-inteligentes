@@ -1,0 +1,90 @@
+<article class="content-section slide-conceptos">
+  <h2>Conceptos fundamentales de RL</h2>
+  <section class="learning-intro" aria-labelledby="conceptos-meta">
+    <h3 id="conceptos-meta">Punto de partida</h3>
+    <dl>
+      <div><dt>Objetivo de aprendizaje</dt><dd>Relacionar los elementos de un proceso de decisión de Markov.</dd></div>
+      <div><dt>Conocimiento previo</dt><dd>Entender por qué las acciones tienen consecuencias sucesivas.</dd></div>
+    </dl>
+  </section>
+  <p>El modelo educativo combina estos conceptos; úsalos como glosario visual durante el recorrido.</p>
+  <ul class="concept-visual-grid" aria-label="Conceptos fundamentales de aprendizaje por refuerzo">
+    <li class="concept-visual-card">
+      <img src="assets/learning-visuals/icons/agent-robot.webp" alt="" width="500" height="500" loading="lazy" decoding="async">
+      <strong>Agente</strong>
+      <span>Sistema que selecciona una acción.</span>
+    </li>
+    <li class="concept-visual-card">
+      <img src="assets/learning-visuals/icons/model-gear.webp" alt="" width="500" height="500" loading="lazy" decoding="async">
+      <strong>Entorno</strong>
+      <span>Reglas que responden a la acción.</span>
+    </li>
+    <li class="concept-visual-card">
+      <img src="assets/learning-visuals/icons/observe-search.webp" alt="" width="500" height="500" loading="lazy" decoding="async">
+      <strong>Estado</strong>
+      <span>Información disponible para decidir.</span>
+    </li>
+    <li class="concept-visual-card">
+      <img src="assets/learning-visuals/icons/security-shield.webp" alt="" width="500" height="500" loading="lazy" decoding="async">
+      <strong>Acción</strong>
+      <span>Decisión ejecutada por el agente.</span>
+    </li>
+    <li class="concept-visual-card">
+      <img src="assets/learning-visuals/icons/reward-target.webp" alt="" width="500" height="500" loading="lazy" decoding="async">
+      <strong>Recompensa</strong>
+      <span>Señal inmediata entregada por el entorno.</span>
+    </li>
+    <li class="concept-visual-card">
+      <img src="assets/learning-visuals/icons/learning-brain.webp" alt="" width="500" height="500" loading="lazy" decoding="async">
+      <strong>Valor Q</strong>
+      <span>Retorno futuro estimado para una acción.</span>
+    </li>
+    <li class="concept-visual-card">
+      <img src="assets/learning-visuals/icons/traffic-light.webp" alt="" width="500" height="500" loading="lazy" decoding="async">
+      <strong>Política</strong>
+      <span>Regla que relaciona estados con decisiones.</span>
+    </li>
+    <li class="concept-visual-card">
+      <img src="assets/learning-visuals/icons/package.webp" alt="" width="500" height="500" loading="lazy" decoding="async">
+      <strong>Transición</strong>
+      <span>Estado, acción, recompensa y estado siguiente.</span>
+    </li>
+  </ul>
+  <aside class="callout" aria-label="Recompensa, retorno y límites">
+    <h3>Dos límites importantes</h3>
+    <p>
+      La recompensa inmediata no es lo mismo que el valor Q: Q estima retorno futuro. Terminación sería un
+      final natural; truncamiento es un corte externo que aquí ocurre después del quinto paso.
+    </p>
+  </aside>
+  <figure class="learning-video">
+    <video controls preload="metadata" width="1280" height="720" aria-describedby="conceptos-video-caption conceptos-video-description">
+      <source src="assets/videos/conceptos.mp4" type="video/mp4">
+      Tu navegador no puede reproducir este video.
+    </video>
+    <figcaption id="conceptos-video-caption">
+      Animación de una transición completa: estado, acción, recompensa proxy y siguiente estado alimentan
+      la actualización de un valor Q.
+    </figcaption>
+    <ol class="visual-key" aria-label="Partes de una transición de aprendizaje por refuerzo">
+      <li><strong>1. Estado</strong><span>Riesgo alto</span></li>
+      <li><strong>2. Acción</strong><span>Bloquear</span></li>
+      <li><strong>3. Recompensa proxy</strong><span>+8</span></li>
+      <li><strong>4. Siguiente estado</strong><span>Riesgo medio</span></li>
+    </ol>
+    <details class="video-transcript" id="conceptos-video-description">
+      <summary>Descripción de la animación</summary>
+      <p>
+        La transición parte en “Riesgo alto”, aplica la acción “Bloquear”, recibe la recompensa proxy +8 y
+        termina en “Riesgo medio”. Esos cuatro datos forman la experiencia que alimenta la actualización de
+        <code>Q(alto, bloquear)</code>.
+      </p>
+    </details>
+  </figure>
+  <h3>Ejemplo aplicado</h3>
+  <p>
+    “Riesgo alto” es el estado; “bloquear” es la acción; +8 es la recompensa proxy; “riesgo medio” es el
+    siguiente estado. Q-learning usa la transición completa para actualizar el valor Q.
+  </p>
+  <p class="understanding-criterion"><strong>Lo comprendiste si…</strong> puedes clasificar correctamente estado, acción, recompensa y siguiente estado en una transición.</p>
+</article>

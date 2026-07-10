@@ -7,7 +7,7 @@ import {
   evaluateDeliveryPolicy,
   runDeliveryTrainingEpisode,
   transitionDelivery,
-} from "../components/robot-repartidor/robot-repartidor.js";
+} from "../src/components/robot-repartidor/robot-repartidor.js";
 
 test("una colisión mantiene al robot en la posición inicial", () => {
   const initial = createInitialDeliveryState();

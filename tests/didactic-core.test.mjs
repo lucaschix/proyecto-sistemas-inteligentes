@@ -8,7 +8,7 @@ import {
   qLearningUpdate,
   scoreAnswers,
   simulatePolicy,
-} from "../didactic/didactic-core.js";
+} from "../src/didactic/didactic-core.js";
 
 test("calcula el retorno descontado del ejemplo", () => {
   assert.equal(discountedReturn([8, 6, 8], 0), 8);

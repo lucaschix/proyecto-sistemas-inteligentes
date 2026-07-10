@@ -1,0 +1,66 @@
+<article class="content-section slide-ciclo">
+  <h2>Ciclo de aprendizaje por recompensas</h2>
+  <section class="learning-intro" aria-labelledby="ciclo-meta">
+    <h3 id="ciclo-meta">Punto de partida</h3>
+    <dl>
+      <div><dt>Objetivo de aprendizaje</dt><dd>Seguir una transición completa y reconocer dónde ocurre la actualización.</dd></div>
+      <div><dt>Conocimiento previo</dt><dd>Conocer el contrato del entorno 3 × 4.</dd></div>
+    </dl>
+  </section>
+  <figure class="learning-visual learning-visual--diagram">
+    <img
+      src="assets/learning-visuals/diagrams/reinforcement-learning-cycle-white.webp"
+      alt="Diagrama del ciclo de aprendizaje por refuerzo: el agente observa el estado del entorno, ejecuta una acción y recibe una recompensa y un nuevo estado."
+      width="960"
+      height="928"
+      decoding="async"
+    >
+    <figcaption>
+      El ciclo se repite: observar, actuar, recibir consecuencias y actualizar lo aprendido.
+      <span class="learning-visual-credit">
+        Diagrama de Megajuice, <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>.
+      </span>
+    </figcaption>
+  </figure>
+  <details class="image-details">
+    <summary>Ver los pasos detallados del ciclo</summary>
+    <ol class="cycle-steps">
+      <li><span aria-hidden="true">1</span>El agente observa el riesgo estimado actual.</li>
+      <li><span aria-hidden="true">2</span>La política de comportamiento selecciona una acción.</li>
+      <li><span aria-hidden="true">3</span>El entorno entrega recompensa proxy y siguiente estado.</li>
+      <li><span aria-hidden="true">4</span>Q-learning actualiza el valor de la combinación observada.</li>
+      <li><span aria-hidden="true">5</span>La interacción continúa; al quinto paso solo se trunca la visualización.</li>
+    </ol>
+  </details>
+  <figure class="learning-video">
+    <video controls preload="metadata" width="1280" height="720" aria-describedby="ciclo-video-caption ciclo-video-description">
+      <source src="assets/videos/ciclo.mp4" type="video/mp4">
+      Tu navegador no puede reproducir este video.
+    </video>
+    <figcaption id="ciclo-video-caption">
+      Animación del ciclo completo: observar, actuar, recibir recompensa, actualizar Q y continuar aprendiendo.
+    </figcaption>
+    <ol class="visual-key" aria-label="Secuencia del ciclo de aprendizaje">
+      <li><strong>1. Observa</strong><span>Riesgo alto</span></li>
+      <li><strong>2. Actúa</strong><span>Bloquear</span></li>
+      <li><strong>3. Recibe</strong><span>+8 y riesgo medio</span></li>
+      <li><strong>4. Actualiza</strong><span>Q(alto, bloquear)</span></li>
+    </ol>
+    <details class="video-transcript" id="ciclo-video-description">
+      <summary>Descripción de la animación</summary>
+      <p>
+        El ciclo empieza cuando el agente observa “Riesgo alto”, selecciona “Bloquear” y el entorno devuelve
+        recompensa +8 junto con “Riesgo medio”. Luego Q-learning actualiza <code>Q(alto, bloquear)</code> y
+        la interacción continúa con una nueva observación.
+      </p>
+    </details>
+  </figure>
+  <p>
+    Como no hay terminación natural, Q-learning conserva el valor futuro al actualizar el quinto paso.
+    La tabla aprende de las acciones elegidas, aunque su política greedy pueda recomendar otra acción:
+    por eso Q-learning es <strong>off-policy</strong>.
+  </p>
+  <h3>Ejemplo aplicado</h3>
+  <p>Riesgo alto → bloquear → recompensa +8 → riesgo medio → actualización de Q(alto, bloquear).</p>
+  <p class="understanding-criterion"><strong>Lo comprendiste si…</strong> puedes ordenar estado, acción, recompensa, siguiente estado y actualización.</p>
+</article>

@@ -1,10 +1,14 @@
 {
   "policy": "Agente DQN entrenado",
+  "seed": 123,
   "metadata": {
-    "steps": 60,
-    "total_reward": -1043.1000000000001,
-    "average_queue": 22.216666666666665,
-    "maximum_queue": 35.0
+    "steps": 80,
+    "total_reward": -1134.6000000000004,
+    "average_queue": 18.9625,
+    "maximum_queue": 35.0,
+    "vehicles_served": 396.0,
+    "switches": 42,
+    "congested_steps": 19
   },
   "steps": [
     {
@@ -13,9 +17,17 @@
       "east_west": 4.0,
       "light": 1,
       "action": 1,
+      "decision_type": "exploitation",
+      "q_values": [
+        -38.876319885253906,
+        -7.448297500610352
+      ],
       "reward": 0.19999999999999996,
+      "cumulative_reward": 0.19999999999999996,
       "total_waiting": 5.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 1.0,
+      "vehicles_arrived_ew": 4.0,
       "switched_light": false
     },
     {
@@ -24,9 +36,17 @@
       "east_west": 5.0,
       "light": 1,
       "action": 1,
+      "decision_type": "exploitation",
+      "q_values": [
+        -27.577699661254883,
+        -6.627100467681885
+      ],
       "reward": -4.0,
+      "cumulative_reward": -3.8,
       "total_waiting": 10.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 4.0,
+      "vehicles_arrived_ew": 6.0,
       "switched_light": false
     },
     {
@@ -35,9 +55,17 @@
       "east_west": 1.0,
       "light": 1,
       "action": 1,
+      "decision_type": "exploitation",
+      "q_values": [
+        -81.17815399169922,
+        -72.13892364501953
+      ],
       "reward": -2.8000000000000007,
+      "cumulative_reward": -6.6000000000000005,
       "total_waiting": 8.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 2.0,
+      "vehicles_arrived_ew": 1.0,
       "switched_light": false
     },
     {
@@ -46,9 +74,17 @@
       "east_west": 7.0,
       "light": 0,
       "action": 0,
+      "decision_type": "exploitation",
+      "q_values": [
+        -35.68429946899414,
+        -53.987945556640625
+      ],
       "reward": -10.1,
+      "cumulative_reward": -16.7,
       "total_waiting": 15.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 6.0,
+      "vehicles_arrived_ew": 6.0,
       "switched_light": true
     },
     {
@@ -57,9 +93,17 @@
       "east_west": 5.0,
       "light": 1,
       "action": 1,
+      "decision_type": "exploitation",
+      "q_values": [
+        -163.03578186035156,
+        -160.00296020507812
+      ],
       "reward": -9.500000000000002,
+      "cumulative_reward": -26.200000000000003,
       "total_waiting": 14.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 1.0,
+      "vehicles_arrived_ew": 3.0,
       "switched_light": true
     },
     {
@@ -68,9 +112,17 @@
       "east_west": 1.0,
       "light": 1,
       "action": 1,
+      "decision_type": "exploitation",
+      "q_values": [
+        -148.3992462158203,
+        -141.4232635498047
+      ],
       "reward": -4.8,
+      "cumulative_reward": -31.000000000000004,
       "total_waiting": 10.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 0.0,
+      "vehicles_arrived_ew": 1.0,
       "switched_light": false
     },
     {
@@ -79,9 +131,17 @@
       "east_west": 1.0,
       "light": 0,
       "action": 0,
+      "decision_type": "exploitation",
+      "q_values": [
+        -66.58377838134766,
+        -86.18048858642578
+      ],
       "reward": -3.3000000000000007,
+      "cumulative_reward": -34.300000000000004,
       "total_waiting": 7.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 2.0,
+      "vehicles_arrived_ew": 0.0,
       "switched_light": true
     },
     {
@@ -90,9 +150,17 @@
       "east_west": 6.0,
       "light": 0,
       "action": 0,
+      "decision_type": "exploitation",
+      "q_values": [
+        -16.502180099487305,
+        -33.736202239990234
+      ],
       "reward": -5.000000000000001,
+      "cumulative_reward": -39.300000000000004,
       "total_waiting": 11.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 4.0,
+      "vehicles_arrived_ew": 5.0,
       "switched_light": false
     },
     {
@@ -101,9 +169,17 @@
       "east_west": 6.0,
       "light": 1,
       "action": 1,
+      "decision_type": "exploitation",
+      "q_values": [
+        -98.73795318603516,
+        -95.73845672607422
+      ],
       "reward": -7.300000000000002,
+      "cumulative_reward": -46.60000000000001,
       "total_waiting": 12.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 1.0,
+      "vehicles_arrived_ew": 5.0,
       "switched_light": true
     },
     {
@@ -112,9 +188,17 @@
       "east_west": 5.0,
       "light": 1,
       "action": 1,
+      "decision_type": "exploitation",
+      "q_values": [
+        -114.92961883544922,
+        -106.14290618896484
+      ],
       "reward": -7.0,
+      "cumulative_reward": -53.60000000000001,
       "total_waiting": 13.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 2.0,
+      "vehicles_arrived_ew": 4.0,
       "switched_light": false
     },
     {
@@ -123,9 +207,17 @@
       "east_west": 2.0,
       "light": 1,
       "action": 1,
+      "decision_type": "exploitation",
+      "q_values": [
+        -132.21253967285156,
+        -125.00679779052734
+      ],
       "reward": -4.6,
+      "cumulative_reward": -58.20000000000001,
       "total_waiting": 10.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 0.0,
+      "vehicles_arrived_ew": 2.0,
       "switched_light": false
     },
     {
@@ -134,9 +226,17 @@
       "east_west": 6.0,
       "light": 0,
       "action": 0,
+      "decision_type": "exploitation",
+      "q_values": [
+        -73.4623031616211,
+        -80.97258758544922
+      ],
       "reward": -9.3,
+      "cumulative_reward": -67.50000000000001,
       "total_waiting": 14.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 5.0,
+      "vehicles_arrived_ew": 4.0,
       "switched_light": true
     },
     {
@@ -145,9 +245,17 @@
       "east_west": 1.0,
       "light": 1,
       "action": 1,
+      "decision_type": "exploitation",
+      "q_values": [
+        -145.01869201660156,
+        -142.80899047851562
+      ],
       "reward": -8.3,
+      "cumulative_reward": -75.80000000000001,
       "total_waiting": 12.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 3.0,
+      "vehicles_arrived_ew": 0.0,
       "switched_light": true
     },
     {
@@ -156,9 +264,17 @@
       "east_west": 5.0,
       "light": 0,
       "action": 0,
+      "decision_type": "exploitation",
+      "q_values": [
+        -99.31160736083984,
+        -119.4077377319336
+      ],
       "reward": -9.500000000000002,
+      "cumulative_reward": -85.30000000000001,
       "total_waiting": 14.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 3.0,
+      "vehicles_arrived_ew": 4.0,
       "switched_light": true
     },
     {
@@ -167,9 +283,17 @@
       "east_west": 2.0,
       "light": 1,
       "action": 1,
+      "decision_type": "exploitation",
+      "q_values": [
+        -143.2337188720703,
+        -142.1240692138672
+      ],
       "reward": -9.100000000000001,
+      "cumulative_reward": -94.4,
       "total_waiting": 13.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 2.0,
+      "vehicles_arrived_ew": 2.0,
       "switched_light": true
     },
     {
@@ -178,9 +302,17 @@
       "east_west": 6.0,
       "light": 0,
       "action": 0,
+      "decision_type": "exploitation",
+      "q_values": [
+        -122.3475570678711,
+        -130.1725616455078
+      ],
       "reward": -11.3,
+      "cumulative_reward": -105.7,
       "total_waiting": 16.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 4.0,
+      "vehicles_arrived_ew": 4.0,
       "switched_light": true
     },
     {
@@ -189,9 +321,17 @@
       "east_west": 4.0,
       "light": 1,
       "action": 1,
+      "decision_type": "exploitation",
+      "q_values": [
+        -177.03016662597656,
+        -175.38124084472656
+      ],
       "reward": -12.700000000000001,
+      "cumulative_reward": -118.4,
       "total_waiting": 17.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 3.0,
+      "vehicles_arrived_ew": 3.0,
       "switched_light": true
     },
     {
@@ -200,9 +340,17 @@
       "east_west": 0.0,
       "light": 1,
       "action": 1,
+      "decision_type": "exploitation",
+      "q_values": [
+        -200.513916015625,
+        -193.9803009033203
+      ],
       "reward": -11.0,
+      "cumulative_reward": -129.4,
       "total_waiting": 16.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 3.0,
+      "vehicles_arrived_ew": 1.0,
       "switched_light": false
     },
     {
@@ -211,9 +359,17 @@
       "east_west": 2.0,
       "light": 0,
       "action": 0,
+      "decision_type": "exploitation",
+      "q_values": [
+        -151.81552124023438,
+        -190.0735321044922
+      ],
       "reward": -11.1,
+      "cumulative_reward": -140.5,
       "total_waiting": 15.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 2.0,
+      "vehicles_arrived_ew": 2.0,
       "switched_light": true
     },
     {
@@ -222,9 +378,17 @@
       "east_west": 3.0,
       "light": 0,
       "action": 0,
+      "decision_type": "exploitation",
+      "q_values": [
+        -140.45233154296875,
+        -153.87158203125
+      ],
       "reward": -8.400000000000002,
+      "cumulative_reward": -148.9,
       "total_waiting": 14.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 3.0,
+      "vehicles_arrived_ew": 1.0,
       "switched_light": false
     },
     {
@@ -233,9 +397,17 @@
       "east_west": 6.0,
       "light": 0,
       "action": 0,
+      "decision_type": "exploitation",
+      "q_values": [
+        -132.74093627929688,
+        -136.73680114746094
+      ],
       "reward": -10.8,
+      "cumulative_reward": -159.70000000000002,
       "total_waiting": 17.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 5.0,
+      "vehicles_arrived_ew": 3.0,
       "switched_light": false
     },
     {
@@ -244,9 +416,17 @@
       "east_west": 3.0,
       "light": 1,
       "action": 1,
+      "decision_type": "exploitation",
+      "q_values": [
+        -193.03590393066406,
+        -191.66737365722656
+      ],
       "reward": -12.900000000000002,
+      "cumulative_reward": -172.60000000000002,
       "total_waiting": 17.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 3.0,
+      "vehicles_arrived_ew": 2.0,
       "switched_light": true
     },
     {
@@ -255,9 +435,17 @@
       "east_west": 2.0,
       "light": 1,
       "action": 1,
+      "decision_type": "exploitation",
+      "q_values": [
+        -195.35252380371094,
+        -193.5526885986328
+      ],
       "reward": -12.600000000000001,
+      "cumulative_reward": -185.20000000000002,
       "total_waiting": 18.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 2.0,
+      "vehicles_arrived_ew": 4.0,
       "switched_light": false
     },
     {
@@ -266,9 +454,17 @@
       "east_west": 3.0,
       "light": 0,
       "action": 0,
+      "decision_type": "exploitation",
+      "q_values": [
+        -203.9082489013672,
+        -211.73155212402344
+      ],
       "reward": -15.9,
+      "cumulative_reward": -201.10000000000002,
       "total_waiting": 20.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 6.0,
+      "vehicles_arrived_ew": 1.0,
       "switched_light": true
     },
     {
@@ -277,9 +473,17 @@
       "east_west": 8.0,
       "light": 0,
       "action": 0,
+      "decision_type": "exploitation",
+      "q_values": [
+        -230.0594940185547,
+        -233.75706481933594
+      ],
       "reward": -17.400000000000002,
+      "cumulative_reward": -218.50000000000003,
       "total_waiting": 24.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 4.0,
+      "vehicles_arrived_ew": 5.0,
       "switched_light": false
     },
     {
@@ -288,9 +492,17 @@
       "east_west": 4.0,
       "light": 1,
       "action": 1,
+      "decision_type": "exploitation",
+      "q_values": [
+        -308.5477600097656,
+        -306.8439636230469
+      ],
       "reward": -16.700000000000003,
+      "cumulative_reward": -235.20000000000005,
       "total_waiting": 21.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 1.0,
+      "vehicles_arrived_ew": 1.0,
       "switched_light": true
     },
     {
@@ -299,9 +511,17 @@
       "east_west": 0.0,
       "light": 1,
       "action": 1,
+      "decision_type": "exploitation",
+      "q_values": [
+        -266.40130615234375,
+        -260.0115661621094
+      ],
       "reward": -16.0,
+      "cumulative_reward": -251.20000000000005,
       "total_waiting": 21.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 4.0,
+      "vehicles_arrived_ew": 1.0,
       "switched_light": false
     },
     {
@@ -310,9 +530,17 @@
       "east_west": 3.0,
       "light": 0,
       "action": 0,
+      "decision_type": "exploitation",
+      "q_values": [
+        -233.44505310058594,
+        -271.9027099609375
+      ],
       "reward": -19.900000000000002,
+      "cumulative_reward": -271.1,
       "total_waiting": 24.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 5.0,
+      "vehicles_arrived_ew": 3.0,
       "switched_light": true
     },
     {
@@ -321,9 +549,17 @@
       "east_west": 7.0,
       "light": 0,
       "action": 0,
+      "decision_type": "exploitation",
+      "q_values": [
+        -294.93853759765625,
+        -298.437255859375
+      ],
       "reward": -20.6,
+      "cumulative_reward": -291.70000000000005,
       "total_waiting": 27.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 4.0,
+      "vehicles_arrived_ew": 4.0,
       "switched_light": false
     },
     {
@@ -332,9 +568,17 @@
       "east_west": 8.0,
       "light": 1,
       "action": 1,
+      "decision_type": "exploitation",
+      "q_values": [
+        -357.72137451171875,
+        -355.8567199707031
+      ],
       "reward": -24.9,
+      "cumulative_reward": -316.6,
       "total_waiting": 30.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 2.0,
+      "vehicles_arrived_ew": 6.0,
       "switched_light": true
     },
     {
@@ -343,9 +587,17 @@
       "east_west": 4.0,
       "light": 1,
       "action": 1,
+      "decision_type": "exploitation",
+      "q_values": [
+        -418.42193603515625,
+        -410.4049072265625
+      ],
       "reward": -25.200000000000003,
+      "cumulative_reward": -341.8,
       "total_waiting": 31.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 5.0,
+      "vehicles_arrived_ew": 1.0,
       "switched_light": false
     },
     {
@@ -354,9 +606,17 @@
       "east_west": 1.0,
       "light": 1,
       "action": 1,
+      "decision_type": "exploitation",
+      "q_values": [
+        -428.6466064453125,
+        -421.65643310546875
+      ],
       "reward": -24.8,
+      "cumulative_reward": -366.6,
       "total_waiting": 30.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 2.0,
+      "vehicles_arrived_ew": 2.0,
       "switched_light": false
     },
     {
@@ -365,9 +625,17 @@
       "east_west": 5.0,
       "light": 0,
       "action": 0,
+      "decision_type": "exploitation",
+      "q_values": [
+        -392.8163757324219,
+        -414.4595947265625
+      ],
       "reward": -30.5,
+      "cumulative_reward": -397.1,
       "total_waiting": 35.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 6.0,
+      "vehicles_arrived_ew": 4.0,
       "switched_light": true
     },
     {
@@ -376,9 +644,17 @@
       "east_west": 3.0,
       "light": 1,
       "action": 1,
+      "decision_type": "exploitation",
+      "q_values": [
+        -482.34649658203125,
+        -480.95111083984375
+      ],
       "reward": -30.9,
+      "cumulative_reward": -428.0,
       "total_waiting": 35.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 2.0,
+      "vehicles_arrived_ew": 3.0,
       "switched_light": true
     },
     {
@@ -387,9 +663,17 @@
       "east_west": 0.0,
       "light": 1,
       "action": 1,
+      "decision_type": "exploitation",
+      "q_values": [
+        -487.6282043457031,
+        -484.9913330078125
+      ],
       "reward": -30.000000000000004,
+      "cumulative_reward": -458.0,
       "total_waiting": 34.0,
       "vehicles_served": 4.0,
+      "vehicles_arrived_ns": 2.0,
+      "vehicles_arrived_ew": 1.0,
       "switched_light": false
     },
     {
@@ -398,9 +682,17 @@
       "east_west": 4.0,
       "light": 0,
       "action": 0,
+      "decision_type": "exploitation",
+      "q_values": [
+        -447.58319091796875,
+        -486.55084228515625
+      ],
       "reward": -30.7,
+      "cumulative_reward": -488.7,
       "total_waiting": 35.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 2.0,
+      "vehicles_arrived_ew": 4.0,
       "switched_light": true
     },
     {
@@ -409,9 +701,17 @@
       "east_west": 0.0,
       "light": 1,
       "action": 1,
+      "decision_type": "exploitation",
+      "q_values": [
+        -478.76715087890625,
+        -478.0982360839844
+      ],
       "reward": -28.5,
+      "cumulative_reward": -517.2,
       "total_waiting": 32.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 1.0,
+      "vehicles_arrived_ew": 1.0,
       "switched_light": true
     },
     {
@@ -420,9 +720,17 @@
       "east_west": 4.0,
       "light": 0,
       "action": 0,
+      "decision_type": "exploitation",
+      "q_values": [
+        -414.62841796875,
+        -453.5176696777344
+      ],
       "reward": -29.700000000000003,
+      "cumulative_reward": -546.9000000000001,
       "total_waiting": 34.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 3.0,
+      "vehicles_arrived_ew": 4.0,
       "switched_light": true
     },
     {
@@ -431,9 +739,17 @@
       "east_west": 1.0,
       "light": 1,
       "action": 1,
+      "decision_type": "exploitation",
+      "q_values": [
+        -462.5426025390625,
+        -461.9337463378906
+      ],
       "reward": -30.300000000000004,
+      "cumulative_reward": -577.2,
       "total_waiting": 34.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 3.0,
+      "vehicles_arrived_ew": 2.0,
       "switched_light": true
     },
     {
@@ -442,9 +758,17 @@
       "east_west": 2.0,
       "light": 0,
       "action": 0,
+      "decision_type": "exploitation",
+      "q_values": [
+        -458.0726318359375,
+        -479.98724365234375
+      ],
       "reward": -29.1,
+      "cumulative_reward": -606.3000000000001,
       "total_waiting": 33.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 3.0,
+      "vehicles_arrived_ew": 1.0,
       "switched_light": true
     },
     {
@@ -453,9 +777,17 @@
       "east_west": 3.0,
       "light": 0,
       "action": 0,
+      "decision_type": "exploitation",
+      "q_values": [
+        -433.43011474609375,
+        -445.9034118652344
+      ],
       "reward": -27.400000000000002,
+      "cumulative_reward": -633.7,
       "total_waiting": 33.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 4.0,
+      "vehicles_arrived_ew": 1.0,
       "switched_light": false
     },
     {
@@ -464,9 +796,17 @@
       "east_west": 3.0,
       "light": 0,
       "action": 0,
+      "decision_type": "exploitation",
+      "q_values": [
+        -440.9163513183594,
+        -443.9676818847656
+      ],
       "reward": -27.400000000000002,
+      "cumulative_reward": -661.1,
       "total_waiting": 33.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 5.0,
+      "vehicles_arrived_ew": 0.0,
       "switched_light": false
     },
     {
@@ -475,9 +815,17 @@
       "east_west": 6.0,
       "light": 0,
       "action": 0,
+      "decision_type": "exploitation",
+      "q_values": [
+        -440.9163513183594,
+        -443.9676818847656
+      ],
       "reward": -27.800000000000004,
+      "cumulative_reward": -688.9,
       "total_waiting": 34.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 3.0,
+      "vehicles_arrived_ew": 3.0,
       "switched_light": false
     },
     {
@@ -486,9 +834,17 @@
       "east_west": 4.0,
       "light": 1,
       "action": 1,
+      "decision_type": "exploitation",
+      "q_values": [
+        -469.7013244628906,
+        -467.6394958496094
+      ],
       "reward": -28.700000000000003,
+      "cumulative_reward": -717.6,
       "total_waiting": 33.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 1.0,
+      "vehicles_arrived_ew": 3.0,
       "switched_light": true
     },
     {
@@ -497,9 +853,17 @@
       "east_west": 0.0,
       "light": 1,
       "action": 1,
+      "decision_type": "exploitation",
+      "q_values": [
+        -461.09564208984375,
+        -453.9853820800781
+      ],
       "reward": -31.0,
+      "cumulative_reward": -748.6,
       "total_waiting": 35.0,
       "vehicles_served": 4.0,
+      "vehicles_arrived_ns": 6.0,
+      "vehicles_arrived_ew": 0.0,
       "switched_light": false
     },
     {
@@ -508,9 +872,17 @@
       "east_west": 1.0,
       "light": 0,
       "action": 0,
+      "decision_type": "exploitation",
+      "q_values": [
+        -464.060546875,
+        -503.0674133300781
+      ],
       "reward": -28.3,
+      "cumulative_reward": -776.9,
       "total_waiting": 32.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 1.0,
+      "vehicles_arrived_ew": 1.0,
       "switched_light": true
     },
     {
@@ -519,9 +891,17 @@
       "east_west": 3.0,
       "light": 0,
       "action": 0,
+      "decision_type": "exploitation",
+      "q_values": [
+        -410.5141296386719,
+        -434.6532897949219
+      ],
       "reward": -25.400000000000002,
+      "cumulative_reward": -802.3,
       "total_waiting": 31.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 2.0,
+      "vehicles_arrived_ew": 2.0,
       "switched_light": false
     },
     {
@@ -530,9 +910,17 @@
       "east_west": 4.0,
       "light": 0,
       "action": 0,
+      "decision_type": "exploitation",
+      "q_values": [
+        -408.476806640625,
+        -411.6275939941406
+      ],
       "reward": -25.200000000000003,
+      "cumulative_reward": -827.5,
       "total_waiting": 31.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 4.0,
+      "vehicles_arrived_ew": 1.0,
       "switched_light": false
     },
     {
@@ -541,9 +929,17 @@
       "east_west": 1.0,
       "light": 1,
       "action": 1,
+      "decision_type": "exploitation",
+      "q_values": [
+        -413.8690185546875,
+        -413.4403076171875
+      ],
       "reward": -24.300000000000004,
+      "cumulative_reward": -851.8,
       "total_waiting": 28.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 0.0,
+      "vehicles_arrived_ew": 2.0,
       "switched_light": true
     },
     {
@@ -552,9 +948,17 @@
       "east_west": 2.0,
       "light": 0,
       "action": 0,
+      "decision_type": "exploitation",
+      "q_values": [
+        -360.188232421875,
+        -381.6957702636719
+      ],
       "reward": -24.1,
+      "cumulative_reward": -875.9,
       "total_waiting": 28.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 4.0,
+      "vehicles_arrived_ew": 1.0,
       "switched_light": true
     },
     {
@@ -563,9 +967,17 @@
       "east_west": 3.0,
       "light": 0,
       "action": 0,
+      "decision_type": "exploitation",
+      "q_values": [
+        -351.9419250488281,
+        -364.6965026855469
+      ],
       "reward": -20.400000000000002,
+      "cumulative_reward": -896.3,
       "total_waiting": 26.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 2.0,
+      "vehicles_arrived_ew": 1.0,
       "switched_light": false
     },
     {
@@ -574,9 +986,17 @@
       "east_west": 4.0,
       "light": 0,
       "action": 0,
+      "decision_type": "exploitation",
+      "q_values": [
+        -327.3780517578125,
+        -330.77734375
+      ],
       "reward": -20.200000000000003,
+      "cumulative_reward": -916.5,
       "total_waiting": 26.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 4.0,
+      "vehicles_arrived_ew": 1.0,
       "switched_light": false
     },
     {
@@ -585,9 +1005,17 @@
       "east_west": 0.0,
       "light": 1,
       "action": 1,
+      "decision_type": "exploitation",
+      "q_values": [
+        -332.74639892578125,
+        -332.617919921875
+      ],
       "reward": -18.5,
+      "cumulative_reward": -935.0,
       "total_waiting": 22.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 0.0,
+      "vehicles_arrived_ew": 1.0,
       "switched_light": true
     },
     {
@@ -596,9 +1024,17 @@
       "east_west": 1.0,
       "light": 0,
       "action": 0,
+      "decision_type": "exploitation",
+      "q_values": [
+        -249.8545684814453,
+        -288.3517761230469
+      ],
       "reward": -16.3,
+      "cumulative_reward": -951.3,
       "total_waiting": 20.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 2.0,
+      "vehicles_arrived_ew": 1.0,
       "switched_light": true
     },
     {
@@ -607,9 +1043,17 @@
       "east_west": 4.0,
       "light": 0,
       "action": 0,
+      "decision_type": "exploitation",
+      "q_values": [
+        -214.74537658691406,
+        -238.0703887939453
+      ],
       "reward": -15.200000000000001,
+      "cumulative_reward": -966.5,
       "total_waiting": 21.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 3.0,
+      "vehicles_arrived_ew": 3.0,
       "switched_light": false
     },
     {
@@ -618,9 +1062,17 @@
       "east_west": 10.0,
       "light": 0,
       "action": 0,
+      "decision_type": "exploitation",
+      "q_values": [
+        -251.6237335205078,
+        -251.7954864501953
+      ],
       "reward": -16.000000000000004,
+      "cumulative_reward": -982.5,
       "total_waiting": 23.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 1.0,
+      "vehicles_arrived_ew": 6.0,
       "switched_light": false
     },
     {
@@ -629,9 +1081,17 @@
       "east_west": 7.0,
       "light": 1,
       "action": 1,
+      "decision_type": "exploitation",
+      "q_values": [
+        -292.30181884765625,
+        -289.6349182128906
+      ],
       "reward": -17.1,
+      "cumulative_reward": -999.6,
       "total_waiting": 22.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 2.0,
+      "vehicles_arrived_ew": 2.0,
       "switched_light": true
     },
     {
@@ -640,9 +1100,17 @@
       "east_west": 4.0,
       "light": 1,
       "action": 1,
+      "decision_type": "exploitation",
+      "q_values": [
+        -282.7913513183594,
+        -275.2754821777344
+      ],
       "reward": -15.200000000000001,
+      "cumulative_reward": -1014.8000000000001,
       "total_waiting": 21.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 2.0,
+      "vehicles_arrived_ew": 2.0,
       "switched_light": false
     },
     {
@@ -651,9 +1119,17 @@
       "east_west": 0.0,
       "light": 1,
       "action": 1,
+      "decision_type": "exploitation",
+      "q_values": [
+        -266.40130615234375,
+        -260.0115661621094
+      ],
       "reward": -15.000000000000002,
+      "cumulative_reward": -1029.8000000000002,
       "total_waiting": 19.0,
       "vehicles_served": 4.0,
+      "vehicles_arrived_ns": 2.0,
+      "vehicles_arrived_ew": 0.0,
       "switched_light": false
     },
     {
@@ -662,9 +1138,397 @@
       "east_west": 1.0,
       "light": 0,
       "action": 0,
+      "decision_type": "exploitation",
+      "q_values": [
+        -200.79324340820312,
+        -239.17103576660156
+      ],
       "reward": -13.3,
+      "cumulative_reward": -1043.1000000000001,
       "total_waiting": 17.0,
       "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 2.0,
+      "vehicles_arrived_ew": 1.0,
+      "switched_light": true
+    },
+    {
+      "step": 61,
+      "north_south": 13.0,
+      "east_west": 3.0,
+      "light": 0,
+      "action": 0,
+      "decision_type": "exploitation",
+      "q_values": [
+        -165.8031768798828,
+        -188.92469787597656
+      ],
+      "reward": -10.4,
+      "cumulative_reward": -1053.5000000000002,
+      "total_waiting": 16.0,
+      "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 2.0,
+      "vehicles_arrived_ew": 2.0,
+      "switched_light": false
+    },
+    {
+      "step": 62,
+      "north_south": 8.0,
+      "east_west": 10.0,
+      "light": 0,
+      "action": 0,
+      "decision_type": "exploitation",
+      "q_values": [
+        -165.1804656982422,
+        -169.07687377929688
+      ],
+      "reward": -11.4,
+      "cumulative_reward": -1064.9000000000003,
+      "total_waiting": 18.0,
+      "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 0.0,
+      "vehicles_arrived_ew": 7.0,
+      "switched_light": false
+    },
+    {
+      "step": 63,
+      "north_south": 11.0,
+      "east_west": 6.0,
+      "light": 1,
+      "action": 1,
+      "decision_type": "exploitation",
+      "q_values": [
+        -213.36180114746094,
+        -209.7373809814453
+      ],
+      "reward": -12.3,
+      "cumulative_reward": -1077.2000000000003,
+      "total_waiting": 17.0,
+      "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 3.0,
+      "vehicles_arrived_ew": 1.0,
+      "switched_light": true
+    },
+    {
+      "step": 64,
+      "north_south": 12.0,
+      "east_west": 3.0,
+      "light": 1,
+      "action": 1,
+      "decision_type": "exploitation",
+      "q_values": [
+        -198.99574279785156,
+        -191.56324768066406
+      ],
+      "reward": -9.4,
+      "cumulative_reward": -1086.6000000000004,
+      "total_waiting": 15.0,
+      "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 1.0,
+      "vehicles_arrived_ew": 2.0,
+      "switched_light": false
+    },
+    {
+      "step": 65,
+      "north_south": 14.0,
+      "east_west": 0.0,
+      "light": 1,
+      "action": 1,
+      "decision_type": "exploitation",
+      "q_values": [
+        -162.5380401611328,
+        -160.5609588623047
+      ],
+      "reward": -9.000000000000002,
+      "cumulative_reward": -1095.6000000000004,
+      "total_waiting": 14.0,
+      "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 2.0,
+      "vehicles_arrived_ew": 2.0,
+      "switched_light": false
+    },
+    {
+      "step": 66,
+      "north_south": 10.0,
+      "east_west": 2.0,
+      "light": 0,
+      "action": 0,
+      "decision_type": "exploitation",
+      "q_values": [
+        -119.316650390625,
+        -157.48020935058594
+      ],
+      "reward": -8.100000000000001,
+      "cumulative_reward": -1103.7000000000003,
+      "total_waiting": 12.0,
+      "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 1.0,
+      "vehicles_arrived_ew": 2.0,
+      "switched_light": true
+    },
+    {
+      "step": 67,
+      "north_south": 8.0,
+      "east_west": 3.0,
+      "light": 0,
+      "action": 0,
+      "decision_type": "exploitation",
+      "q_values": [
+        -91.82516479492188,
+        -105.38502502441406
+      ],
+      "reward": -5.4,
+      "cumulative_reward": -1109.1000000000004,
+      "total_waiting": 11.0,
+      "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 3.0,
+      "vehicles_arrived_ew": 1.0,
+      "switched_light": false
+    },
+    {
+      "step": 68,
+      "north_south": 5.0,
+      "east_west": 6.0,
+      "light": 0,
+      "action": 0,
+      "decision_type": "exploitation",
+      "q_values": [
+        -86.48535919189453,
+        -89.98101043701172
+      ],
+      "reward": -5.000000000000001,
+      "cumulative_reward": -1114.1000000000004,
+      "total_waiting": 11.0,
+      "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 2.0,
+      "vehicles_arrived_ew": 3.0,
+      "switched_light": false
+    },
+    {
+      "step": 69,
+      "north_south": 7.0,
+      "east_west": 2.0,
+      "light": 1,
+      "action": 1,
+      "decision_type": "exploitation",
+      "q_values": [
+        -98.73795318603516,
+        -95.73845672607422
+      ],
+      "reward": -5.1000000000000005,
+      "cumulative_reward": -1119.2000000000003,
+      "total_waiting": 9.0,
+      "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 2.0,
+      "vehicles_arrived_ew": 1.0,
+      "switched_light": true
+    },
+    {
+      "step": 70,
+      "north_south": 6.0,
+      "east_west": 3.0,
+      "light": 0,
+      "action": 0,
+      "decision_type": "exploitation",
+      "q_values": [
+        -57.16722106933594,
+        -64.5726089477539
+      ],
+      "reward": -4.9,
+      "cumulative_reward": -1124.1000000000004,
+      "total_waiting": 9.0,
+      "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 4.0,
+      "vehicles_arrived_ew": 1.0,
+      "switched_light": true
+    },
+    {
+      "step": 71,
+      "north_south": 4.0,
+      "east_west": 5.0,
+      "light": 0,
+      "action": 0,
+      "decision_type": "exploitation",
+      "q_values": [
+        -55.928260803222656,
+        -58.71365737915039
+      ],
+      "reward": -3.2,
+      "cumulative_reward": -1127.3000000000004,
+      "total_waiting": 9.0,
+      "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 3.0,
+      "vehicles_arrived_ew": 2.0,
+      "switched_light": false
+    },
+    {
+      "step": 72,
+      "north_south": 5.0,
+      "east_west": 4.0,
+      "light": 1,
+      "action": 1,
+      "decision_type": "exploitation",
+      "q_values": [
+        -66.11488342285156,
+        -62.71541213989258
+      ],
+      "reward": -4.7,
+      "cumulative_reward": -1132.0000000000005,
+      "total_waiting": 9.0,
+      "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 1.0,
+      "vehicles_arrived_ew": 4.0,
+      "switched_light": true
+    },
+    {
+      "step": 73,
+      "north_south": 5.0,
+      "east_west": 1.0,
+      "light": 1,
+      "action": 1,
+      "decision_type": "exploitation",
+      "q_values": [
+        -64.1077880859375,
+        -56.58179473876953
+      ],
+      "reward": -0.8000000000000007,
+      "cumulative_reward": -1132.8000000000004,
+      "total_waiting": 6.0,
+      "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 0.0,
+      "vehicles_arrived_ew": 2.0,
+      "switched_light": false
+    },
+    {
+      "step": 74,
+      "north_south": 1.0,
+      "east_west": 2.0,
+      "light": 0,
+      "action": 0,
+      "decision_type": "exploitation",
+      "q_values": [
+        -10.753097534179688,
+        -24.4598445892334
+      ],
+      "reward": 0.6999999999999997,
+      "cumulative_reward": -1132.1000000000004,
+      "total_waiting": 3.0,
+      "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 1.0,
+      "vehicles_arrived_ew": 1.0,
+      "switched_light": true
+    },
+    {
+      "step": 75,
+      "north_south": 1.0,
+      "east_west": 4.0,
+      "light": 0,
+      "action": 0,
+      "decision_type": "exploitation",
+      "q_values": [
+        -3.6956140995025635,
+        -4.389748573303223
+      ],
+      "reward": 0.19999999999999996,
+      "cumulative_reward": -1131.9000000000003,
+      "total_waiting": 5.0,
+      "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 5.0,
+      "vehicles_arrived_ew": 2.0,
+      "switched_light": false
+    },
+    {
+      "step": 76,
+      "north_south": 3.0,
+      "east_west": 1.0,
+      "light": 1,
+      "action": 1,
+      "decision_type": "exploitation",
+      "q_values": [
+        -22.85237693786621,
+        -4.741024494171143
+      ],
+      "reward": -0.30000000000000027,
+      "cumulative_reward": -1132.2000000000003,
+      "total_waiting": 4.0,
+      "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 2.0,
+      "vehicles_arrived_ew": 2.0,
+      "switched_light": true
+    },
+    {
+      "step": 77,
+      "north_south": 0.0,
+      "east_west": 3.0,
+      "light": 0,
+      "action": 0,
+      "decision_type": "exploitation",
+      "q_values": [
+        -4.012969493865967,
+        -9.364723205566406
+      ],
+      "reward": 0.49999999999999956,
+      "cumulative_reward": -1131.7000000000003,
+      "total_waiting": 3.0,
+      "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 2.0,
+      "vehicles_arrived_ew": 2.0,
+      "switched_light": true
+    },
+    {
+      "step": 78,
+      "north_south": 3.0,
+      "east_west": 0.0,
+      "light": 1,
+      "action": 1,
+      "decision_type": "exploitation",
+      "q_values": [
+        -16.314489364624023,
+        -2.5906989574432373
+      ],
+      "reward": -0.5000000000000004,
+      "cumulative_reward": -1132.2000000000003,
+      "total_waiting": 3.0,
+      "vehicles_served": 4.0,
+      "vehicles_arrived_ns": 3.0,
+      "vehicles_arrived_ew": 1.0,
+      "switched_light": true
+    },
+    {
+      "step": 79,
+      "north_south": 3.0,
+      "east_west": 3.0,
+      "light": 0,
+      "action": 0,
+      "decision_type": "exploitation",
+      "q_values": [
+        -3.2640202045440674,
+        -8.222126960754395
+      ],
+      "reward": -1.9000000000000008,
+      "cumulative_reward": -1134.1000000000004,
+      "total_waiting": 6.0,
+      "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 5.0,
+      "vehicles_arrived_ew": 3.0,
+      "switched_light": true
+    },
+    {
+      "step": 80,
+      "north_south": 4.0,
+      "east_west": 0.0,
+      "light": 1,
+      "action": 1,
+      "decision_type": "exploitation",
+      "q_values": [
+        -18.379798889160156,
+        -14.62117862701416
+      ],
+      "reward": -0.5000000000000002,
+      "cumulative_reward": -1134.6000000000004,
+      "total_waiting": 4.0,
+      "vehicles_served": 5.0,
+      "vehicles_arrived_ns": 1.0,
+      "vehicles_arrived_ew": 2.0,
       "switched_light": true
     }
   ]

@@ -1,0 +1,41 @@
+{
+  "episode_steps": 80,
+  "seeds": [
+    200,
+    201,
+    202,
+    203,
+    204,
+    205,
+    206,
+    207,
+    208,
+    209,
+    210,
+    211,
+    212,
+    213,
+    214,
+    215,
+    216,
+    217,
+    218,
+    219
+  ],
+  "random": {
+    "total_reward": -2952.94,
+    "average_queue": 42.674375,
+    "maximum_queue": 64.4,
+    "vehicles_served": 370.4,
+    "switches": 39.9,
+    "congested_steps": 59.05
+  },
+  "trained": {
+    "total_reward": -2334.9950000000003,
+    "average_queue": 33.87437500000001,
+    "maximum_queue": 56.3,
+    "vehicles_served": 388.85,
+    "switches": 41.45,
+    "congested_steps": 45.65
+  }
+}

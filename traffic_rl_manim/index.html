@@ -14,152 +14,85 @@
       --muted: rgb(30 41 59 / 0.72);
       --action: #6C5CE7;
       --info: #3D8BFF;
-      --success: #2ECC71;
-      --warning: #FFC107;
-      --danger: #FF6B6B;
+      --success: #20A66A;
       --border: rgb(108 92 231 / 0.24);
-      --radius: 8px;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
-
-    body {
-      margin: 0;
-      color: var(--text);
-      background: var(--background);
-      line-height: 1.6;
-    }
-
-    main {
-      width: min(960px, calc(100% - 32px));
-      margin: 0 auto;
-      padding: 48px 0;
-    }
-
-    h1,
-    h2 {
-      line-height: 1.15;
-    }
-
-    h1 {
-      margin: 0 0 12px;
-      font-size: 3rem;
-    }
-
-    h2 {
-      margin-top: 32px;
-    }
-
-    p {
-      max-width: 72ch;
-    }
-
-    .eyebrow {
-      margin: 0 0 8px;
-      color: var(--action);
-      font-size: 0.8rem;
-      font-weight: 800;
-      text-transform: uppercase;
-    }
-
-    .video-frame {
-      margin: 32px 0;
-    }
-
-    video {
-      display: block;
-      width: 100%;
-      height: auto;
-      aspect-ratio: 16 / 9;
-      background: var(--text);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-    }
-
-    figcaption {
-      margin-top: 10px;
-      color: var(--muted);
-    }
-
-    .summary-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 24px;
-    }
-
-    .summary-grid section {
-      padding: 16px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-    }
-
-    .summary-grid h3 {
-      margin: 0 0 8px;
-    }
-
-    .summary-grid p {
-      margin: 0;
-    }
-
-    code {
-      padding: 2px 5px;
-      background: var(--surface-soft);
-      border-radius: 4px;
-    }
-
-    @media (max-width: 720px) {
-      main {
-        padding: 32px 0;
-      }
-
-      h1 {
-        font-size: 2.1rem;
-      }
-
-      .summary-grid {
-        grid-template-columns: 1fr;
-      }
-    }
+    body { margin: 0; color: var(--text); background: var(--background); line-height: 1.6; }
+    main { width: min(960px, calc(100% - 32px)); margin: 0 auto; padding: 48px 0; }
+    h1, h2 { line-height: 1.15; }
+    h1 { margin: 0 0 12px; font-size: clamp(2.1rem, 5vw, 3rem); }
+    p { max-width: 72ch; }
+    .eyebrow { margin: 0 0 8px; color: var(--action); font-size: .8rem; font-weight: 800; text-transform: uppercase; }
+    .video-frame { margin: 32px 0; }
+    video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: var(--text); border: 1px solid var(--border); border-radius: 12px; }
+    figcaption { margin-top: 10px; color: var(--muted); }
+    .summary-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 24px; }
+    .summary-grid section { padding: 18px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; }
+    .summary-grid h2 { margin: 0 0 10px; font-size: 1.1rem; }
+    .metric-list { margin: 0; padding: 0; list-style: none; }
+    .metric-list li { display: flex; justify-content: space-between; gap: 16px; padding: 6px 0; border-bottom: 1px solid rgb(30 41 59 / .08); }
+    .metric-list li:last-child { border-bottom: 0; }
+    .status { color: var(--muted); }
+    code { padding: 2px 5px; background: var(--surface-soft); border-radius: 4px; }
+    @media (max-width: 720px) { main { padding: 32px 0; } .summary-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
   <main>
     <p class="eyebrow">Aprendizaje por refuerzo</p>
     <h1>Control de tráfico vehicular con DQN</h1>
-    <p>
-      Esta demostración muestra cómo un agente DQN aprende a controlar un semáforo en una intersección
-      con dos direcciones para reducir vehículos esperando.
-    </p>
+    <p>La simulación compara dos políticas bajo las mismas semillas de tráfico. Las métricas se cargan desde el archivo de evaluación generado por Python.</p>
 
     <figure class="video-frame">
       <video controls preload="metadata" width="1280" height="720" aria-describedby="video-description">
-        <source src="media/videos/traffic_animation/480p15/TrafficLearningScene.mp4" type="video/mp4">
+        <source src="../assets/videos/traffic-learning.mp4" type="video/mp4">
         Tu navegador no puede reproducir este video.
       </video>
-      <figcaption id="video-description">
-        Video generado con Manim: explica estado, acción, recompensa, red neuronal DQN, agente aleatorio,
-        agente entrenado y comparación de resultados.
-      </figcaption>
+      <figcaption id="video-description">El video muestra el ciclo RL, los valores Q de la red DQN, vehículos en movimiento y una comparación simultánea entre políticas.</figcaption>
     </figure>
 
-    <div class="summary-grid" aria-label="Resumen comparativo">
-      <section>
-        <h3>Agente aleatorio</h3>
-        <p>Cola promedio: <strong>36.55</strong>. Recompensa total: <strong>-1812.20</strong>.</p>
-      </section>
-      <section>
-        <h3>Agente DQN entrenado</h3>
-        <p>Cola promedio: <strong>22.22</strong>. Recompensa total: <strong>-1043.10</strong>.</p>
-      </section>
-    </div>
+    <p id="metrics-status" class="status">Cargando métricas de evaluación…</p>
+    <div id="summary-grid" class="summary-grid" aria-label="Resumen comparativo" hidden></div>
 
     <h2>Archivos generados</h2>
-    <p>
-      Modelo: <code>outputs/models/traffic_dqn.zip</code>. Trayectorias:
-      <code>outputs/trajectories/random_trajectory.json</code> y
-      <code>outputs/trajectories/trained_trajectory.json</code>.
-    </p>
+    <p>Modelo: <code>outputs/models/traffic_dqn.zip</code>. Trayectorias y resumen: <code>outputs/trajectories/</code>.</p>
   </main>
+
+  <script type="module">
+    const status = document.querySelector('#metrics-status');
+    const grid = document.querySelector('#summary-grid');
+    const metricRows = (data) => [
+      ['Cola promedio', data.average_queue?.toFixed(2) ?? '—'],
+      ['Recompensa total', data.total_reward?.toFixed(2) ?? '—'],
+      ['Vehículos atendidos', data.vehicles_served?.toFixed(1) ?? '—'],
+      ['Cambios de luz', data.switches?.toFixed(1) ?? '—'],
+    ];
+    const makeCard = (title, data) => {
+      const section = document.createElement('section');
+      const heading = document.createElement('h2');
+      heading.textContent = title;
+      const list = document.createElement('ul');
+      list.className = 'metric-list';
+      metricRows(data).forEach(([label, value]) => {
+        const item = document.createElement('li');
+        item.innerHTML = `<span>${label}</span><strong>${value}</strong>`;
+        list.append(item);
+      });
+      section.append(heading, list);
+      return section;
+    };
+    try {
+      const response = await fetch('outputs/trajectories/evaluation_summary.json');
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const summary = await response.json();
+      grid.append(makeCard('Agente aleatorio', summary.random), makeCard('Agente DQN entrenado', summary.trained));
+      grid.hidden = false;
+      status.remove();
+    } catch (error) {
+      status.textContent = 'No se encontraron métricas. Ejecuta train_agent.py y export_trajectories.py.';
+      console.error(error);
+    }
+  </script>
 </body>
 </html>

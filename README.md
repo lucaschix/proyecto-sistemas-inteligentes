@@ -1,30 +1,44 @@
 # Proyecto de Sistemas Inteligentes
 
-Aplicación web educativa que explica los fundamentos del **aprendizaje por refuerzo** mediante un simulador de decisiones ante distintos niveles de riesgo de red. Permite observar cómo un agente selecciona acciones, recibe recompensas y actualiza una tabla Q utilizando el algoritmo **Q-learning**. El proyecto fue desarrollado con HTML, CSS y JavaScript con fines académicos.
+Aplicación web educativa para aprender los fundamentos del aprendizaje por refuerzo mediante explicaciones visuales, una tabla Q compartida y simuladores interactivos.
 
-## Clonar el repositorio
+## Estructura
 
-```bash
-git clone https://github.com/lucaschix/proyecto-sistemas-inteligentes.git
-cd proyecto-sistemas-inteligentes
+```text
+.
+├── index.html                 # Entrada de la aplicación
+├── src/                       # Código fuente web
+│   ├── app.js                 # Navegación y carga de componentes
+│   ├── components/            # HTML, CSS y JS de cada sección
+│   ├── didactic/              # Actividades didácticas compartidas
+│   └── styles/main.css        # Estilos y tokens globales
+├── assets/
+│   ├── learning-visuals/      # Diagramas, iconos y atribuciones
+│   └── videos/                # Videos finales consumidos por la web
+├── manim/scenes/              # Fuentes Python de videos educativos
+├── traffic_rl_manim/          # Experimento DQN de control de tráfico
+├── tests/                     # Pruebas automatizadas
+├── scripts/                   # Utilidades de integración
+├── docs/ y templates/         # Guías y plantillas de trabajo
+└── archive/                   # Respaldos y material histórico
 ```
+
+Las salidas temporales de Manim, los entornos virtuales y los cachés de Python no forman parte del código fuente y están excluidos mediante `.gitignore`.
 
 ## Ejecutar localmente
 
-Inicia un servidor HTTP desde la carpeta del proyecto:
+Desde la raíz del repositorio:
 
 ```bash
-python3 -m http.server 8000
+npm start
 ```
 
-En Windows:
+También puedes usar `python3 -m http.server 8000`. Luego abre `http://localhost:8000`.
 
-```powershell
-py -m http.server 8000
+## Pruebas
+
+```bash
+npm test
 ```
 
-Luego abre en el navegador:
-
-```text
-http://localhost:8000
-```
+Consulta [src/components/README.md](src/components/README.md) para la convención de componentes y [manim/README.md](manim/README.md) para las fuentes de animación.

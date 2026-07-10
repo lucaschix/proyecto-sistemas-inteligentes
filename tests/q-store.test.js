@@ -1,14 +1,14 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { createQStore } from "../components/q-store.js";
+import { createQStore } from "../src/components/q-store.js";
 import {
   actionOrder,
   getOutcome,
   metricOrder,
   outcomeModel,
   stateOrder
-} from "../components/rl-model.js";
+} from "../src/components/rl-model.js";
 
 function experience(state, action, overrides = {}) {
   return {

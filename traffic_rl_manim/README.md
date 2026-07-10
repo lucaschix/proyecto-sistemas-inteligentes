@@ -25,7 +25,7 @@ Animación educativa con Manim
 ## Instalación en Ubuntu
 
 ```bash
-cd /home/cherry/proyectofinalSI/traffic_rl_manim
+cd traffic_rl_manim
 
 python3 -m venv .venv
 source .venv/bin/activate
@@ -59,7 +59,7 @@ sudo apt install -y \
 ```bash
 python train_agent.py
 python export_trajectories.py
-manim -pqh traffic_animation.py TrafficLearningScene
+manim -qm traffic_animation.py TrafficLearningScene
 ```
 
 ## Renderizado rápido para pruebas
@@ -78,10 +78,10 @@ docker run --rm \
     manim -ql traffic_animation.py TrafficLearningScene
 ```
 
-## Renderizado de alta calidad
+## Renderizado de calidad media
 
 ```bash
-manim -pqh traffic_animation.py TrafficLearningScene
+manim -qm traffic_animation.py TrafficLearningScene
 ```
 
 ## Archivos generados
@@ -93,4 +93,4 @@ outputs/trajectories/trained_trajectory.json
 media/
 ```
 
-El video final de Manim queda dentro de `media/videos/traffic_animation/`, en una subcarpeta según la calidad usada (`480p15`, `1080p60`, etc.).
+`run_demo.sh` conserva la salida temporal dentro de `media/` y publica el video que usa la aplicación en `../assets/videos/traffic-learning.mp4`.

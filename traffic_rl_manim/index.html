@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demo RL de tráfico vehicular</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --background: #f3f5f4;
+      --surface: #ffffff;
+      --surface-soft: #eef5f2;
+      --text: #172320;
+      --muted: #54645f;
+      --action: #176b5b;
+      --border: #c7d4cf;
+      --radius: 8px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--background);
+      line-height: 1.6;
+    }
+
+    main {
+      width: min(960px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 48px 0;
+    }
+
+    h1,
+    h2 {
+      line-height: 1.15;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 4vw, 3rem);
+    }
+
+    h2 {
+      margin-top: 32px;
+    }
+
+    p {
+      max-width: 72ch;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--action);
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .video-frame {
+      margin: 32px 0;
+    }
+
+    video {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      background: #0f172a;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    figcaption {
+      margin-top: 10px;
+      color: var(--muted);
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .summary-grid section {
+      padding: 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+
+    .summary-grid h3 {
+      margin: 0 0 8px;
+    }
+
+    .summary-grid p {
+      margin: 0;
+    }
+
+    code {
+      padding: 2px 5px;
+      background: var(--surface-soft);
+      border-radius: 4px;
+    }
+
+    @media (max-width: 720px) {
+      main {
+        padding: 32px 0;
+      }
+
+      .summary-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">Aprendizaje por refuerzo</p>
+    <h1>Control de tráfico vehicular con DQN</h1>
+    <p>
+      Esta demostración muestra cómo un agente DQN aprende a controlar un semáforo en una intersección
+      con dos direcciones para reducir vehículos esperando.
+    </p>
+
+    <figure class="video-frame">
+      <video controls preload="metadata" width="1280" height="720" aria-describedby="video-description">
+        <source src="media/videos/traffic_animation/480p15/TrafficLearningScene.mp4" type="video/mp4">
+        Tu navegador no puede reproducir este video.
+      </video>
+      <figcaption id="video-description">
+        Video generado con Manim: explica estado, acción, recompensa, red neuronal DQN, agente aleatorio,
+        agente entrenado y comparación de resultados.
+      </figcaption>
+    </figure>
+
+    <div class="summary-grid" aria-label="Resumen comparativo">
+      <section>
+        <h3>Agente aleatorio</h3>
+        <p>Cola promedio: <strong>36.55</strong>. Recompensa total: <strong>-1812.20</strong>.</p>
+      </section>
+      <section>
+        <h3>Agente DQN entrenado</h3>
+        <p>Cola promedio: <strong>22.22</strong>. Recompensa total: <strong>-1043.10</strong>.</p>
+      </section>
+    </div>
+
+    <h2>Archivos generados</h2>
+    <p>
+      Modelo: <code>outputs/models/traffic_dqn.zip</code>. Trayectorias:
+      <code>outputs/trajectories/random_trajectory.json</code> y
+      <code>outputs/trajectories/trained_trajectory.json</code>.
+    </p>
+  </main>
+</body>
+</html>

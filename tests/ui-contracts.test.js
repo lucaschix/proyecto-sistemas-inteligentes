@@ -136,3 +136,12 @@ test("las secciones introductorias integran videos Manim responsivos", async () 
   assert.match(cicloManim, /class CicloAprendizajeRecompensas\(Scene\)/);
   assert.match(qManim, /class QLearningTableUpdate\(Scene\)/);
 });
+
+test("el video DQN de tráfico es accesible desde un slide principal", async () => {
+  const markup = await read("components/caso-practico/caso-practico.html");
+
+  assert.match(markup, /<figure class="learning-video">/);
+  assert.match(markup, /src="traffic_rl_manim\/media\/videos\/traffic_animation\/480p15\/TrafficLearningScene\.mp4"/);
+  assert.match(markup, /aria-describedby="traffic-video-caption traffic-video-description"/);
+  assert.match(markup, /id="traffic-video-description"[\s\S]*agente aleatorio[\s\S]*agente DQN entrenado/);
+});

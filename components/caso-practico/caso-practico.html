@@ -16,6 +16,23 @@
     Contener actividad de alto riesgo favorece la seguridad, pero bloquear actividad legítima puede afectar
     la disponibilidad. La recompensa proxy resume ese equilibrio sin sustituir métricas de seguridad.
   </p>
+  <figure class="learning-video">
+    <video controls preload="metadata" width="1280" height="720" aria-describedby="traffic-video-caption traffic-video-description">
+      <source src="traffic_rl_manim/media/videos/traffic_animation/480p15/TrafficLearningScene.mp4" type="video/mp4">
+      Tu navegador no puede reproducir este video.
+    </video>
+    <figcaption id="traffic-video-caption">
+      Video complementario: una demo de aprendizaje por refuerzo controla un semáforo con DQN para reducir colas de vehículos.
+    </figcaption>
+    <details class="video-transcript" id="traffic-video-description">
+      <summary>Descripción del video</summary>
+      <p>
+        La animación muestra qué observa el agente, qué acciones puede tomar, cómo recibe recompensas,
+        cómo se comporta un agente aleatorio y cómo mejora un agente DQN entrenado. También presenta una
+        red neuronal simple que estima valores Q para elegir entre semáforo verde Norte-Sur o Este-Oeste.
+      </p>
+    </details>
+  </figure>
   <h3>Ejemplo aplicado</h3>
   <p>
     Permitir actividad de riesgo medio eleva el siguiente estado a riesgo alto; observarla lleva a riesgo

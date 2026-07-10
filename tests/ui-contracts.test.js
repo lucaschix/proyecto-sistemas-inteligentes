@@ -15,6 +15,27 @@ test("la tabla Q expone una región desplazable con nombre accesible", async () 
   assert.match(markup, /role="status" aria-live="polite" aria-atomic="true"/);
 });
 
+test("la tabla Q conecta una transición concreta con la celda actualizada", async () => {
+  const [markup, styles] = await Promise.all([
+    read("components/q-learning/q-learning.html"),
+    read("style.css")
+  ]);
+
+  assert.match(markup, /class="q-transition-bridge" aria-labelledby="q-transition-title"/);
+  assert.match(markup, /Datos de la transición que alimentan la actualización Q/);
+  assert.match(markup, /<span class="q-flow-label">Estado<\/span>\s*<strong>Riesgo alto<\/strong>/);
+  assert.match(markup, /<span class="q-flow-label">Acción<\/span>\s*<strong>Bloquear<\/strong>/);
+  assert.match(markup, /<span class="q-flow-label">Recompensa<\/span>\s*<strong>\+8<\/strong>/);
+  assert.match(markup, /<span class="q-flow-label">Siguiente estado<\/span>\s*<strong>Riesgo medio<\/strong>/);
+  assert.match(markup, /<code>Q\(alto, bloquear\)<\/code>/);
+  assert.match(markup, /<figcaption class="q-target-label">Celda actualizada por esta transición<\/figcaption>/);
+  assert.match(markup, /fila <strong>Riesgo alto<\/strong> y la columna <strong>Bloquear<\/strong>/);
+  assert.match(markup, /enfoca la tabla y usa el teclado/);
+  assert.match(styles, /\.q-transition-flow\s*{/);
+  assert.match(styles, /grid-template-columns: repeat\(4, minmax\(8rem, 1fr\)\)/);
+  assert.match(styles, /@media \(max-width: 720px\)[\s\S]*\.q-transition-flow\s*{\s*grid-template-columns: 1fr;/);
+});
+
 test("la tabla comparativa expone desplazamiento accesible por teclado", async () => {
   const markup = await read("components/comparacion/comparacion.html");
   assert.match(markup, /class="table-wrap"[\s\S]*role="region"/);
@@ -77,20 +98,41 @@ test("la tabla Q usa fuentes canónicas y feedback de parámetros", async () => 
 });
 
 test("las secciones introductorias integran videos Manim responsivos", async () => {
-  const [rlMarkup, conceptsMarkup, styles, rlManim, conceptsManim] = await Promise.all([
+  const [rlMarkup, conceptsMarkup, cicloMarkup, qMarkup, styles, rlManim, conceptsManim, cicloManim, qManim] = await Promise.all([
     read("components/que-es-rl/que-es-rl.html"),
     read("components/conceptos/conceptos.html"),
+    read("components/ciclo/ciclo.html"),
+    read("components/q-learning/q-learning.html"),
     read("style.css"),
     read("components/que-es-rl/que-es-rl-manim.py"),
-    read("components/conceptos/conceptos-manim.py")
+    read("components/conceptos/conceptos-manim.py"),
+    read("components/ciclo/ciclo-manim.py"),
+    read("components/q-learning/q-learning-manim.py")
   ]);
 
   assert.match(rlMarkup, /<figure class="learning-video">/);
-  assert.match(rlMarkup, /<video controls preload="metadata" width="1280" height="720">/);
+  assert.match(rlMarkup, /aria-describedby="que-es-rl-video-caption que-es-rl-video-description"/);
   assert.match(rlMarkup, /src="video\/que-es-rl\.mp4"/);
+  assert.match(rlMarkup, /class="visual-key"[\s\S]*1\. Estado[\s\S]*2\. Acción[\s\S]*3\. Recompensa[\s\S]*4\. Siguiente estado/);
+  assert.match(rlMarkup, /id="que-es-rl-video-description"[\s\S]*actualiza su política o\s+valor Q/);
   assert.match(conceptsMarkup, /<figure class="learning-video">/);
+  assert.match(conceptsMarkup, /aria-describedby="conceptos-video-caption conceptos-video-description"/);
   assert.match(conceptsMarkup, /src="video\/conceptos\.mp4"/);
+  assert.match(conceptsMarkup, /class="visual-key"[\s\S]*3\. Recompensa proxy/);
+  assert.match(conceptsMarkup, /id="conceptos-video-description"[\s\S]*Q\(alto, bloquear\)/);
+  assert.match(cicloMarkup, /src="video\/ciclo\.mp4"/);
+  assert.match(cicloMarkup, /aria-describedby="ciclo-video-caption ciclo-video-description"/);
+  assert.match(cicloMarkup, /class="visual-key"[\s\S]*1\. Observa[\s\S]*4\. Actualiza/);
+  assert.match(cicloMarkup, /id="ciclo-video-description"[\s\S]*Q\(alto, bloquear\)/);
+  assert.match(qMarkup, /src="video\/q-learning\.mp4"/);
+  assert.match(qMarkup, /aria-describedby="q-learning-video-caption q-learning-video-description"/);
+  assert.match(qMarkup, /class="visual-key"[\s\S]*1\. Transición[\s\S]*4\. Nuevo valor/);
+  assert.match(qMarkup, /id="q-learning-video-description"[\s\S]*4,00 hasta 8,40/);
   assert.match(styles, /\.learning-video video/);
+  assert.match(styles, /\.visual-key/);
+  assert.match(styles, /\.video-transcript/);
   assert.match(rlManim, /class QueEsRLCycle\(Scene\)/);
   assert.match(conceptsManim, /class ConceptosTransicion\(Scene\)/);
+  assert.match(cicloManim, /class CicloAprendizajeRecompensas\(Scene\)/);
+  assert.match(qManim, /class QLearningTableUpdate\(Scene\)/);
 });

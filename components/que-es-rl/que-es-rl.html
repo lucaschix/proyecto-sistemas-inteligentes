@@ -18,14 +18,28 @@
     recompensa inmediata alta no siempre tiene el mayor valor a largo plazo.
   </p>
   <figure class="learning-video">
-    <video controls preload="metadata" width="1280" height="720">
+    <video controls preload="metadata" width="1280" height="720" aria-describedby="que-es-rl-video-caption que-es-rl-video-description">
       <source src="video/que-es-rl.mp4" type="video/mp4">
       Tu navegador no puede reproducir este video.
     </video>
-    <figcaption>
+    <figcaption id="que-es-rl-video-caption">
       Animación del ciclo de aprendizaje por refuerzo: el agente observa un riesgo, actúa, recibe recompensa
       y usa la transición para seguir aprendiendo.
     </figcaption>
+    <ol class="visual-key" aria-label="Elementos del ciclo agente entorno">
+      <li><strong>1. Estado</strong><span>Riesgo alto</span></li>
+      <li><strong>2. Acción</strong><span>Bloquear</span></li>
+      <li><strong>3. Recompensa</strong><span>+8</span></li>
+      <li><strong>4. Siguiente estado</strong><span>Riesgo medio</span></li>
+    </ol>
+    <details class="video-transcript" id="que-es-rl-video-description">
+      <summary>Descripción de la animación</summary>
+      <p>
+        El agente recibe el estado observado “Riesgo alto”, elige la acción “Bloquear”, el entorno responde
+        con recompensa +8 y devuelve “Riesgo medio”. Con esa transición, el agente actualiza su política o
+        valor Q y repite el ciclo con la nueva observación.
+      </p>
+    </details>
   </figure>
   <aside class="callout" aria-label="Idea central">
     <h3>Idea central</h3>

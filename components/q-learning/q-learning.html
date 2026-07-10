@@ -43,6 +43,31 @@
     </p>
   </aside>
 
+  <figure class="learning-video">
+    <video controls preload="metadata" width="1280" height="720" aria-describedby="q-learning-video-caption q-learning-video-description">
+      <source src="video/q-learning.mp4" type="video/mp4">
+      Tu navegador no puede reproducir este video.
+    </video>
+    <figcaption id="q-learning-video-caption">
+      Animación de la actualización Q: una transición concreta entrena la celda Q(alto, bloquear) y cambia su estimación.
+    </figcaption>
+    <ol class="visual-key" aria-label="Secuencia de actualización de la tabla Q">
+      <li><strong>1. Transición</strong><span>alto, bloquear, +8, medio</span></li>
+      <li><strong>2. Objetivo TD</strong><span>8 + 0,8 × 6</span></li>
+      <li><strong>3. Celda Q</strong><span>Q(alto, bloquear)</span></li>
+      <li><strong>4. Nuevo valor</strong><span>4,00 → 8,40</span></li>
+    </ol>
+    <details class="video-transcript" id="q-learning-video-description">
+      <summary>Descripción de la animación</summary>
+      <p>
+        La transición “Riesgo alto, Bloquear, recompensa +8, Riesgo medio” produce un objetivo TD de 12,8.
+        Con alpha 0,5, la celda <code>Q(alto, bloquear)</code> se mueve desde 4,00 hasta 8,40. La animación
+        marca esa celda en una tabla Q simplificada para mostrar que se actualiza la combinación estado-acción
+        entrenada en ese paso.
+      </p>
+    </details>
+  </figure>
+
   <div class="learning-tool q-lab" id="q-lab">
     <div class="tool-heading">
       <div>
@@ -90,7 +115,44 @@
       Con inicialización en cero, una acción aún no visitada puede aparecer como greedy frente a acciones penalizadas.
       Si no ves todas las acciones, desplázate horizontalmente dentro de la tabla.
     </p>
-    <p class="table-scroll-hint" id="q-table-scroll-hint">Desplazamiento horizontal disponible: arrastra o usa Mayús + rueda para ver todas las acciones.</p>
+    <section class="q-transition-bridge" aria-labelledby="q-transition-title">
+      <div class="q-transition-bridge-copy">
+        <p class="eyebrow">Lectura guiada</p>
+        <h4 id="q-transition-title">De una transición a una celda Q</h4>
+        <p>
+          Esta experiencia del ciclo entrena la combinación usada como fila y columna en la tabla.
+        </p>
+      </div>
+      <ol class="q-transition-flow" aria-label="Datos de la transición que alimentan la actualización Q">
+        <li>
+          <span class="q-flow-label">Estado</span>
+          <strong>Riesgo alto</strong>
+        </li>
+        <li>
+          <span class="q-flow-label">Acción</span>
+          <strong>Bloquear</strong>
+        </li>
+        <li>
+          <span class="q-flow-label">Recompensa</span>
+          <strong>+8</strong>
+        </li>
+        <li>
+          <span class="q-flow-label">Siguiente estado</span>
+          <strong>Riesgo medio</strong>
+        </li>
+      </ol>
+      <figure class="q-update-target">
+        <figcaption class="q-target-label">Celda actualizada por esta transición</figcaption>
+        <code>Q(alto, bloquear)</code>
+        <p>
+          La recompensa y el mejor valor futuro desplazan esa estimación; no actualizan todas las celdas en ese paso.
+        </p>
+      </figure>
+    </section>
+    <p class="table-instruction">
+      En la tabla, busca la fila <strong>Riesgo alto</strong> y la columna <strong>Bloquear</strong> para ver esa estimación.
+    </p>
+    <p class="table-scroll-hint" id="q-table-scroll-hint">Desplazamiento horizontal disponible: arrastra, usa Mayús + rueda o enfoca la tabla y usa el teclado para recorrer sus celdas.</p>
     <div
       class="table-wrap"
       role="region"

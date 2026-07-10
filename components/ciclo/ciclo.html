@@ -14,6 +14,29 @@
     <li><span aria-hidden="true">4</span>Q-learning actualiza el valor de la combinación observada.</li>
     <li><span aria-hidden="true">5</span>La interacción continúa; al quinto paso solo se trunca la visualización.</li>
   </ol>
+  <figure class="learning-video">
+    <video controls preload="metadata" width="1280" height="720" aria-describedby="ciclo-video-caption ciclo-video-description">
+      <source src="video/ciclo.mp4" type="video/mp4">
+      Tu navegador no puede reproducir este video.
+    </video>
+    <figcaption id="ciclo-video-caption">
+      Animación del ciclo completo: observar, actuar, recibir recompensa, actualizar Q y continuar aprendiendo.
+    </figcaption>
+    <ol class="visual-key" aria-label="Secuencia del ciclo de aprendizaje">
+      <li><strong>1. Observa</strong><span>Riesgo alto</span></li>
+      <li><strong>2. Actúa</strong><span>Bloquear</span></li>
+      <li><strong>3. Recibe</strong><span>+8 y riesgo medio</span></li>
+      <li><strong>4. Actualiza</strong><span>Q(alto, bloquear)</span></li>
+    </ol>
+    <details class="video-transcript" id="ciclo-video-description">
+      <summary>Descripción de la animación</summary>
+      <p>
+        El ciclo empieza cuando el agente observa “Riesgo alto”, selecciona “Bloquear” y el entorno devuelve
+        recompensa +8 junto con “Riesgo medio”. Luego Q-learning actualiza <code>Q(alto, bloquear)</code> y
+        la interacción continúa con una nueva observación.
+      </p>
+    </details>
+  </figure>
   <p>
     Como no hay terminación natural, Q-learning conserva el valor futuro al actualizar el quinto paso.
     La tabla aprende de las acciones elegidas, aunque su política greedy pueda recomendar otra acción:

@@ -22,14 +22,28 @@
     <div><dt>Truncamiento</dt><dd>Corte por un límite externo; aquí ocurre después del quinto paso y conserva el valor futuro.</dd></div>
   </dl>
   <figure class="learning-video">
-    <video controls preload="metadata" width="1280" height="720">
+    <video controls preload="metadata" width="1280" height="720" aria-describedby="conceptos-video-caption conceptos-video-description">
       <source src="video/conceptos.mp4" type="video/mp4">
       Tu navegador no puede reproducir este video.
     </video>
-    <figcaption>
+    <figcaption id="conceptos-video-caption">
       Animación de una transición completa: estado, acción, recompensa proxy y siguiente estado alimentan
       la actualización de un valor Q.
     </figcaption>
+    <ol class="visual-key" aria-label="Partes de una transición de aprendizaje por refuerzo">
+      <li><strong>1. Estado</strong><span>Riesgo alto</span></li>
+      <li><strong>2. Acción</strong><span>Bloquear</span></li>
+      <li><strong>3. Recompensa proxy</strong><span>+8</span></li>
+      <li><strong>4. Siguiente estado</strong><span>Riesgo medio</span></li>
+    </ol>
+    <details class="video-transcript" id="conceptos-video-description">
+      <summary>Descripción de la animación</summary>
+      <p>
+        La transición parte en “Riesgo alto”, aplica la acción “Bloquear”, recibe la recompensa proxy +8 y
+        termina en “Riesgo medio”. Esos cuatro datos forman la experiencia que alimenta la actualización de
+        <code>Q(alto, bloquear)</code>.
+      </p>
+    </details>
   </figure>
   <h3>Ejemplo aplicado</h3>
   <p>

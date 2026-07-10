@@ -33,7 +33,32 @@ Desde la raíz del repositorio:
 npm start
 ```
 
-También puedes usar `python3 -m http.server 8000`. Luego abre `http://localhost:8000`.
+Eso inicia un servidor web local con un puerto libre y te muestra la URL exacta en consola. Si prefieres, también puedes ejecutar:
+
+```bash
+python3 scripts/serve.py
+```
+
+## Ejecutar el proyecto completo
+
+Para la web educativa básica:
+
+```bash
+npm start
+```
+
+Para la demostración de tráfico con entrenamiento y renderizado:
+
+```bash
+cd traffic_rl_manim
+python3 -m venv .venv
+source .venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
+./run_demo.sh
+```
+
+Si Manim no está disponible en tu sistema, el script muestra un mensaje de error claro; en ese caso puedes usar Docker o instalar las dependencias nativas de Manim.
 
 ## Pruebas
 
